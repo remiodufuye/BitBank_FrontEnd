@@ -1,16 +1,20 @@
 
 import React from 'react'
-import {Header,Image} from 'semantic-ui-react'
+import {Header,Image , Segment } from 'semantic-ui-react'
 import logo from '../images/BitBANK.png'
 
-const HeaderComponent = () => {
-    return(<div>
-         <Header as='h2'>
-        {/* <Image circular src={logo} /> Welcome to BitBANK */}
-        <Image circular src="" /> Welcome to BitBANK
-        </Header>
-        </div>
-    )
+ class HeaderComponent extends React.Component {
+    render() {
+        return (
+                <Segment clearing>
+                <Header as='h1' floated='left' >Welcome to BitBANK</Header>
+                <Header as='h4' floated='right'>
+                    {this.props.user ? <Image circular src={logo} avatar/> : null}
+                </Header>
+                {/* {this.props.user ? <Button floated='right' onClick={this.props.handleClick}>Logout</Button>: null} */}
+                </Segment>          
+        )
+    }
 }
 
 export default HeaderComponent 
