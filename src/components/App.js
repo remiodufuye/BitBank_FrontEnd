@@ -3,6 +3,7 @@ import { Route , Switch } from "react-router-dom"
 import '../App.css';
 import HeaderComponent from './HeaderComponent' 
 import AllCurrenciesContainer from './AllCurrenciesContainer'
+// import MainContainer from './MainContainer' 
 
 class App extends Component {
   render() {
@@ -10,7 +11,7 @@ class App extends Component {
       <div className="App">
         <HeaderComponent />
         <Switch>
-           <Route path ="/" component={AllCurrenciesContainer} />
+           <Route path ="/" component={AllCurrenciesContainer}  />
        </Switch>
         
       </div>
