@@ -7,4 +7,4 @@ const WatchListContainer = () => {
     )
 }
 
-export default WatchListContainer
+export default WatchListContainer 
