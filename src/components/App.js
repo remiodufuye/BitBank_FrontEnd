@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import { Route , Switch } from "react-router-dom"
 import '../App.css';
 import HeaderComponent from './HeaderComponent' 
+import AllCurrenciesContainer from './AllCurrenciesContainer'
 
 class App extends Component {
   render() {
@@ -9,10 +10,9 @@ class App extends Component {
       <div className="App">
         <HeaderComponent />
         <Switch>
-
+           <Route path ="/" component={AllCurrenciesContainer} />
        </Switch>
         
-   
       </div>
     );
   }

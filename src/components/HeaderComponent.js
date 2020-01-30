@@ -1,9 +1,9 @@
 
-import React from 'react'
+import React , {Component} from 'react'
 import {Header,Image , Segment } from 'semantic-ui-react'
 import logo from '../images/BitBANK.png'
 
- class HeaderComponent extends React.Component {
+ class HeaderComponent extends Component {
     render() {
         return (
                 <Segment clearing>
