@@ -18,8 +18,8 @@ function fetchingCurrencies(){
         fetch(URL)
         .then(res => res.json())
         .then(currencyArray => {
-            console.log(currencyArray)
-            // dispatch(fetchedCurrencies(currencyArray))
+            // console.log(currencyArray)
+            dispatch(fetchedCurrencies(currencyArray))
         })
     }
 }
