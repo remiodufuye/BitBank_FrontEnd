@@ -19,7 +19,7 @@ function fetchingCurrencies(){
         .then(response => response.json()) 
         .then(currencyArray => {
             // console.log(currencyArray)
-            dispatch(fetchedCurrencies(currencyArray))
+         dispatch(fetchedCurrencies(currencyArray))
         })
     }
 }

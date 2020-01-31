@@ -3,7 +3,7 @@ import React , {Component} from 'react'
 import {Header,Image , Segment } from 'semantic-ui-react'
 import logo from '../images/BitBANK.png'
 
- class HeaderComponent extends Component {
+ class Navbar extends Component {
     render() {
         return (
                 <Segment clearing>
@@ -17,4 +17,4 @@ import logo from '../images/BitBANK.png'
     }
 }
 
-export default HeaderComponent 
+export default Navbar 

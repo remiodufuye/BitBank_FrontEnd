@@ -12,9 +12,19 @@ const loadingReducer = (oldState=false, action) => {
             return oldState
     }
 }
+
+const currenciesReducer = (oldState=[] , action) => {
+    switch(action.type) {
+        case FETCHED_CURRENCIES:
+            return action.payload
+            default:
+            return oldState 
+    }
+}
  
 const rootreducer = combineReducers({
-    loading: loadingReducer
+    loading: loadingReducer ,
+    currencies: currenciesReducer
 })
 
 
