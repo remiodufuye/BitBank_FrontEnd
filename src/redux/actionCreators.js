@@ -16,7 +16,7 @@ function fetchingCurrencies(){
     return (dispatch) => {
         dispatch(loadingCurrencies())
         fetch(URL)
-        .then(res => res.json())
+        .then(response => response.json()) 
         .then(currencyArray => {
             // console.log(currencyArray)
             dispatch(fetchedCurrencies(currencyArray))
