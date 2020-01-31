@@ -1,24 +1,20 @@
 
 import {combineReducers} from 'redux'
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES} from './actionType'
 
-const initialState = {
-    allcryptocurrencies: [],
-    searchCoin: "" ,
-    watchlistIds: [],
-    portfolioIds:[] 
-}
-
-function searchCoinReducer(oldState = "", action){
-    return oldState
-}
-
-function allcryptoreducer(oldState=[], action) {
-    return oldState
+const loadingReducer = (oldState=false, action) => {
+    switch(action.type) {
+        case LOADING_CURRENCIES:
+            return true 
+        case FETCHED_CURRENCIES:
+            return false 
+            default:
+            return oldState
+    }
 }
  
 const rootreducer = combineReducers({
-    searchCoin: searchCoinReducer,
-    allcryptocurrencies: allcryptoreducer
+    loading: loadingReducer
 })
 
 
