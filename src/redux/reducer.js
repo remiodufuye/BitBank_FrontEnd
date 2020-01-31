@@ -1,21 +1,25 @@
 
+import {combineReducers} from 'redux'
+
 const initialState = {
     allcryptocurrencies: [],
-    searchText: "" ,
+    searchCoin: "" ,
     watchlistIds: [],
     portfolioIds:[] 
 }
 
-
-function reducer (oldState =initialState, action) {
-    switch (action.type) {
-        case "SEARCH": 
-        return {
-            ...oldState,
-            searchText: action.payload 
-        }
-    }
+function searchCoinReducer(oldState = "", action){
     return oldState
 }
 
-export default reducer 
+function allcryptoreducer(oldState=[], action) {
+    return oldState
+}
+ 
+const rootreducer = combineReducers({
+    searchCoin: searchCoinReducer,
+    allcryptocurrencies: allcryptoreducer
+})
+
+
+export default rootreducer 
