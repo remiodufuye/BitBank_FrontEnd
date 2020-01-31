@@ -1,9 +1,13 @@
 
 import React from 'react'
+import CurrencyList from './CurrencyList'
 
 const PortfolioContainer = () => {
    return(
-       <div> Portfolio Container</div>
+       <div> 
+           Portfolio Container
+           <CurrencyList /> 
+        </div>
    )
 } 
 

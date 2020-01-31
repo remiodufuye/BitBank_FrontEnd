@@ -3,6 +3,8 @@ import { Route , Switch , withRouter} from "react-router-dom"
 import '../App.css';
 import Navbar from './Navbar' 
 import AllCurrenciesContainer from './AllCurrenciesContainer'
+import PortfolioContainer from './PortfolioContainer'
+import WatchListContainer from './WatchListContainer'
 import {connect} from 'react-redux'
 import {fetchingCurrencies} from '../redux/actionCreators'
 // import MainContainer from './MainContainer' 
@@ -18,6 +20,8 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
+           <Route path ="/portfolio" component={PortfolioContainer}  />
+           <Route path ="/watchlist" component={WatchListContainer}  />
            <Route path ="/" component={AllCurrenciesContainer}  />
        </Switch>
         

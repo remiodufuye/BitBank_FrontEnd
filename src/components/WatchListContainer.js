@@ -1,9 +1,13 @@
 
 import React from 'react'
+import CurrencyList from './CurrencyList'
 
 const WatchListContainer = () => {
     return(
-        <div></div>
+        <div>
+            WatchList
+          <CurrencyList /> 
+        </div> 
     )
 }
 

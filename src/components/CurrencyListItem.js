@@ -1,15 +1,39 @@
 
 import React from 'react'
-import { Image as ImageComponent, Item } from 'semantic-ui-react'
+import { Item } from 'semantic-ui-react'
+import {Button , Icon } from 'semantic-ui-react'
 
 // const paragraph = <ImageComponent src='/images/wireframe/short-paragraph.png' />
 
 const CurrencyListItem = props =>  (
-     <div>
-      <h2> {props.currency.website} </h2>
-      <h2>{props.currency.coin_id}</h2>
-      <h2>{props.currency.name}</h2>
-     </div>
+  <div>
+    <Item.Group link>
+     <Item>
+       <Item.Image size='tiny' src={props.currency.logo} />
+
+      <Item.Content>
+         <Item.Header>{props.currency.name}</Item.Header>
+         <Item.Header>{props.currency.symbol}</Item.Header>
+         <Item.Header>{props.currency.price}</Item.Header>
+         <Item.Header>{props.currency.market_cap}</Item.Header>
+
+          <Button animated='vertical'>
+          <Button.Content hidden>Buy</Button.Content>
+          <Button.Content visible>
+          <Icon name='dollar sign' />
+          </Button.Content>
+          </Button>
+          <Button animated='vertical'>
+          <Button.Content hidden>Watch This</Button.Content>
+          <Button.Content visible>
+          <Icon name='eye' />
+          </Button.Content>
+          </Button>
+
+      </Item.Content>
+    </Item>
+    </Item.Group>
+    </div>
   ) ;
 
 export default CurrencyListItem 
@@ -17,31 +41,3 @@ export default CurrencyListItem
 
 
 
-
-
-// const CurrencyListItem = props => {
-//   return (<div>
-//         <h2> {props.currency.website} </h2>
-//         <h2>{props.currency.coin_id}</h2>
-//         <h2>{props.currency.name}</h2>
-//   </div>
-//   )
-//   }
-
-
-// with Semantic 
-// const CurrencyListItem = props => {
-//   return (<div>
-//      <Item.Group link>
-//     <Item>
-//       <Item.Image size='tiny' src='/images/avatar/large/stevie.jpg' />
-
-//       <Item.Content>
-//         <Item.Header>{props.currency.name}</Item.Header>
-//         <Item.Description>{""}</Item.Description>
-//       </Item.Content>
-//     </Item>
-//   </Item.Group>
-//   </div>
-//   )
-//   }
