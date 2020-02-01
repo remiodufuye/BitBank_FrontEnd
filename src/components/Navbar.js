@@ -8,12 +8,14 @@ class Navbar extends Component {
 
         return (
             <Segment clearing>
+              <Link to="/" class ="item">
             <Header as='h1' floated='left' >BitBANK</Header>
+              </Link>
             <Header as='h4' floated='right'></Header>
             <Link to="/" className="item">
               <h2 className="ui header">
                 {/* <div className="sub header">Decentralized Crypro Exchange</div> */}
-              </h2>
+              </h2> 
             </Link>
             <NavLink to="/" activeClassName="active item" className="item">
               <h3 className="ui header">Home</h3>
