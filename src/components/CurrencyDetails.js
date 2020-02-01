@@ -8,6 +8,6 @@ const CurrencyDetails = () => {
    </div>
 
    )
-}
+} 
 
 export default CurrencyDetails
