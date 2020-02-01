@@ -1,6 +1,6 @@
 
 import {combineReducers} from 'redux'
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES,ADD_TO_PORTFOLIO , ADD_TO_WATCHLIST} from './actionType'
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADD_TO_PORTFOLIO , ADD_TO_WATCHLIST} from './actionType'
 
 const loadingReducer = (oldState=false, action) => {
     switch(action.type) {

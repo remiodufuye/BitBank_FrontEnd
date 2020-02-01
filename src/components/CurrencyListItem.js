@@ -1,12 +1,9 @@
 
 import React from 'react'
 import { Card , Image , Button } from 'semantic-ui-react'
-// import {Button , Icon } from 'semantic-ui-react'
 import {addtoPortfolio} from '../redux/actionCreators' 
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux' 
-
-// const paragraph = <ImageComponent src='/images/wireframe/short-paragraph.png' />
 
 const CurrencyListItem = props =>  (
       <Card>
@@ -19,9 +16,6 @@ const CurrencyListItem = props =>  (
         <Card.Header>{props.currency.name}</Card.Header>
         <Card.Meta><strong>{props.currency.symbol}</strong></Card.Meta>
         <Card.Meta><strong>${props.currency.price}</strong></Card.Meta>
-        {/* <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
-        </Card.Description> */}
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
@@ -29,7 +23,7 @@ const CurrencyListItem = props =>  (
             Buy
           </Button>
           <Button basic color='red'>
-            Watch
+            Details
           </Button>
         </div>
       </Card.Content>

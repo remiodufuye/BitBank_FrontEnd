@@ -11,20 +11,14 @@ class Navbar extends Component {
               <Link to="/" class ="item">
             <Header as='h1' floated='left' >BitBANK</Header>
               </Link>
-            <Header as='h4' floated='right'></Header>
-            <Link to="/" className="item">
-              <h2 className="ui header">
-                {/* <div className="sub header">Decentralized Crypro Exchange</div> */}
-              </h2> 
-            </Link>
             <NavLink to="/" activeClassName="active item" className="item">
-              <h3 className="ui header">Home</h3>
+            <Header as='h2' floated='right'>HOME</Header>
             </NavLink>
-            <NavLink exact to="/portfolio" activeClassName="active item" className="item">
-              <h3 className="ui header">Portfolio</h3>
+            <NavLink to="/portfolio" activeClassName="active item" className="item">
+            <Header as='h2' floated='right'>PORTFOLIO</Header>
             </NavLink>
-            <NavLink exact to="/watchlist" activeClassName="active item" className="item">
-              <h3 className="ui header">Watchlist</h3>
+            <NavLink to="/watchlist" activeClassName="active item" className="item">
+            <Header as='h2' floated='right'>WATCHLIST</Header>
             </NavLink>
             </Segment>
         );
