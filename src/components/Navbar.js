@@ -2,23 +2,23 @@
 import React , {Component} from 'react'; 
 // import logo from '../images/BitBANK.png'
 import { Link, NavLink, withRouter } from "react-router-dom";
-import {Segment, Header} from 'semantic-ui-react'
+import {Segment, Header , Icon} from 'semantic-ui-react'
 class Navbar extends Component {
     render() {
 
         return (
             <Segment clearing>
               <Link to="/" class ="item">
-            <Header as='h1' floated='left' >BitBANK</Header>
+            <Header as='h1' floated='left' ><Icon name="dollar sign"/>BitBANK</Header>
               </Link>
             <NavLink to="/" activeClassName="active item" className="item">
-            <Header as='h2' floated='right'>HOME</Header>
+            <Header as='h2' floated='right'>Home</Header>
             </NavLink>
             <NavLink to="/portfolio" activeClassName="active item" className="item">
-            <Header as='h2' floated='right'>PORTFOLIO</Header>
+            <Header as='h2' floated='right'>Portfolio</Header>
             </NavLink>
             <NavLink to="/watchlist" activeClassName="active item" className="item">
-            <Header as='h2' floated='right'>WATCHLIST</Header>
+            <Header as='h2' floated='right'>WatchList</Header>
             </NavLink>
             </Segment>
         );

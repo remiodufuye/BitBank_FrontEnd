@@ -1,12 +1,12 @@
 
 
-body {
+body::after {
   background: url('./images/BitBANK.png');
 } 
 
-/* body::after {
+ /* body::after {
   content: "";
-  background: url('./images/BitBANK.png');
+  background: url('./images/crypyo.jpg');
   opacity: 0.5;
   top: 0;
   left: 0;
@@ -14,8 +14,8 @@ body {
   right: 0;
   position: absolute;
   z-index: -1;  
-  background-attachment: fixed; 
-  background-position: center;  
+  background-attachment: fixed;  
+  background-position: center;   
   background-size: cover; 
 } */
 

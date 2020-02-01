@@ -24,14 +24,13 @@ class App extends Component {
            <Route path ="/watchlist" component={WatchListContainer}  />
            <Route path ="/" component={AllCurrenciesContainer}  />
        </Switch>
-        
       </div>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchingCurrencies: () => {dispatch(fetchingCurrencies())}
+  fetchingCurrencies: () => {dispatch(fetchingCurrencies())} ,
 })
 
 export default withRouter(connect(null,mapDispatchToProps) (App)) ; 

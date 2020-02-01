@@ -1,9 +1,10 @@
 
 import React from 'react'
 import { Card , Image , Button } from 'semantic-ui-react'
-import {addtoPortfolio} from '../redux/actionCreators' 
-import {withRouter} from 'react-router-dom'
-import {connect} from 'react-redux' 
+import { Link, withRouter } from "react-router-dom";
+// import {addedToPortfolio} from '../redux/actionCreators' 
+
+// import {connect} from 'react-redux' 
 
 const CurrencyListItem = props =>  (
       <Card>
@@ -17,26 +18,27 @@ const CurrencyListItem = props =>  (
         <Card.Meta><strong>{props.currency.symbol}</strong></Card.Meta>
         <Card.Meta><strong>${props.currency.price}</strong></Card.Meta>
       </Card.Content>
+      <Link to="/" class ="item">
       <Card.Content extra>
         <div className='ui two buttons'>
           <Button basic color='green'>
-            Buy
-          </Button>
-          <Button basic color='red'>
-            Details
+            Show Coin Details
           </Button>
         </div>
       </Card.Content>
+      </Link>
     </Card>
   ) ;
 
+  export default CurrencyListItem 
+
   // add to portfolio 
-  const mapDispatchToProps = (dispatch) => ({
-     buy: (currencyID)=>{dispatch(addtoPortfolio(currencyID))}
+//   const mapDispatchToProps = (dispatch) => ({
+//      buy: ()=>{dispatch(addedToPortfolio())}
 
-  })
+//   })
 
-export default withRouter(connect(null,mapDispatchToProps)(CurrencyListItem)) ; 
+// export default withRouter(connect(null,mapDispatchToProps)(CurrencyListItem)) ; 
 
 
 

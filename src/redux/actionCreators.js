@@ -1,5 +1,5 @@
 
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES , ADD_TO_WATCHLIST , ADD_TO_PORTFOLIO} from './actionType'
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES , ADDED_TO_WATCHLIST , ADDED_TO_PORTFOLIO} from './actionType'
 
 const URL = 'http://localhost:3000/currencies'
 
@@ -12,15 +12,15 @@ function fetchedCurrencies(currencyArray) {
     return {type: FETCHED_CURRENCIES , payload: currencyArray}
 }
 
-function addtoPortfolio(currencyID){
-    // return {type:ADD_TO_PORTFOLIO , payload:currencyID}
+function addedToPortfolio(currencyID){
+    // return {type:ADDED_TO_PORTFOLIO , payload:currencyID}
     return(dispatch) => {
-        console.log("adding here to portfolio")
+        console.log(`adding ${currencyID} to portfolio`)
     }
 }
 
 function addtoWatchList(currencyID){
-    return {type:ADD_TO_WATCHLIST , payload:currencyID}
+    return {type:ADDED_TO_WATCHLIST , payload:currencyID}
 }
 
 function fetchingCurrencies(){
@@ -29,10 +29,9 @@ function fetchingCurrencies(){
          fetch(URL)
         .then(response => response.json()) 
         .then(currencyArray => {
-            // console.log(currencyArray)
          dispatch(fetchedCurrencies(currencyArray))
         })
     }
 }
 
-export {fetchingCurrencies,addtoPortfolio,addtoWatchList} 
+export {fetchingCurrencies,addedToPortfolio,addtoWatchList} 
