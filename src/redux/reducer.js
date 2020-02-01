@@ -16,7 +16,7 @@ const loadingReducer = (oldState=false, action) => {
 const currenciesReducer = (oldState=[] , action) => {
     switch(action.type) {
         case FETCHED_CURRENCIES:
-            return action.payload
+            return action.payload.filter(currency => currency.price !== null)
             default:
             return oldState 
     }

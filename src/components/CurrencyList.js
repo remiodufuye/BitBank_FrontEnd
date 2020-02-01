@@ -10,7 +10,7 @@ const CurrencyList = props => props.loading ? <p>Loading...</p> : (
         <div className ="ui container">
             <div>
                 <Grid columns="three" divided>
-                <Card.Group itemsPerRow={6}>
+                <Card.Group itemsPerRow={3}>
                 { props.currencies.map(currency => (
                     < CurrencyListItem
                     key ={currency.id}

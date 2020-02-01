@@ -26,7 +26,7 @@ function addtoWatchList(currencyID){
 function fetchingCurrencies(){
     return (dispatch) => {
         dispatch(loadingCurrencies())
-        fetch(URL)
+         fetch(URL)
         .then(response => response.json()) 
         .then(currencyArray => {
             // console.log(currencyArray)
