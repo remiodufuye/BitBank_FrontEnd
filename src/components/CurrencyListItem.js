@@ -29,14 +29,15 @@ const CurrencyListItem = props =>  (
       </Link>
     </Card>
   ) ;
-
-  export default CurrencyListItem 
+  
+  // export default withRouter(connect(null,mapDispatchToProps)(CurrencyListItem)) ; 
+   export default CurrencyListItem 
 
   // add to portfolio 
-//   const mapDispatchToProps = (dispatch) => ({
-//      buy: ()=>{dispatch(addedToPortfolio())}
+  // const mapDispatchToProps = (dispatch) => ({
+  //    buy: ()=>{dispatch(addedToPortfolio())}
 
-//   })
+  // })
 
 // export default withRouter(connect(null,mapDispatchToProps)(CurrencyListItem)) ; 
 

@@ -8,6 +8,7 @@ import WatchListContainer from './WatchListContainer'
 import {connect} from 'react-redux'
 import {fetchingCurrencies} from '../redux/actionCreators'
 import Footer from './Footer' 
+import SubHeader from './SubHeader' 
 // import MainContainer from './MainContainer' 
 
 class App extends Component {
@@ -22,12 +23,17 @@ class App extends Component {
         <Navbar />
         <br/>
         <br/> 
+        <br />
+        <SubHeader /> 
+        <br />
+        <br />
+        <br /> 
         <Switch>
            <Route path ="/portfolio" component={PortfolioContainer}  />
            <Route path ="/watchlist" component={WatchListContainer}  />
            <Route path ="/" component={AllCurrenciesContainer}  />
        </Switch>
-       <Footer /> 
+       {/* <Footer />  */}
       </div>
     );
   }
