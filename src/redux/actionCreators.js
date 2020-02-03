@@ -31,7 +31,7 @@ function addtoWatchList(currencyID){
 function addingToWatchList(currencyID) {
     return (dispatch,getState) => {
         console.log(`in adding to watchlist${currencyID}`) 
-        // this will dispatch  dispatch(addtoWatchList(currencyID))
+        // this will dispatch :  dispatch(addtoWatchList(currencyID))
     }
 }
 

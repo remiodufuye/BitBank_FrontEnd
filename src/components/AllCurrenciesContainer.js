@@ -8,16 +8,9 @@ class AllCurrenciesContainer  extends Component{
     render() {
         return(
         <div>
-            <Switch>
-                <Route 
-                path="/currencies/:currencyId"
-                component={currencyDetail}/>
-                <Route 
-                path="/"
-                component={CurrencyList}
-                />
+    
              <CurrencyList /> 
-            </Switch>
+        
         </div>
         )
     }

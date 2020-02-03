@@ -8,6 +8,8 @@ import WatchListContainer from './WatchListContainer'
 import {connect} from 'react-redux'
 import {fetchingCurrencies} from '../redux/actionCreators'
 import Footer from './Footer' 
+import currencyDetail from '../currencydetail/currencyDetail'
+
 // import MainContainer from './MainContainer' 
 
 class App extends Component {
@@ -23,7 +25,9 @@ class App extends Component {
         <Switch>
            <Route path ="/portfolio" component={PortfolioContainer}  />
            <Route path ="/watchlist" component={WatchListContainer}  />
+           <Route path="/currencies/:currencyId" component={currencyDetail} />
            <Route path ="/" component={AllCurrenciesContainer}  />
+           {/* <Route path="/"component={CurrencyList}/> */}
        </Switch>
        {/* <Footer />  */}
       </div>

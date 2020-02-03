@@ -16,10 +16,10 @@ class CurrencyDetail extends Component {
 
 const mapStateToProps = (store, ownProps) => ({
   currency: store.currencies.find(
-     currency => {return currency.coin_id === ownProps.match.params.currencyId}
+     currency => {return currency.coin_id === parseInt(ownProps.match.params.currencyId)}
    )
  })
 
- export default withRouter(connect(mapStateToProps, null)(CurrencyDetail));
+ export default withRouter(connect(mapStateToProps,null)(CurrencyDetail));
 
 
