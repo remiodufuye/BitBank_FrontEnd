@@ -7,7 +7,6 @@ import NumberFormat from 'react-number-format'
 
 
 class CurrencyDetail extends Component {
-
   constructor() {
     super() 
     this.state = {
@@ -57,7 +56,7 @@ class CurrencyDetail extends Component {
       </Embed> 
       */}
 
-      
+
 
       {/* Button  */}
       <Segment>
