@@ -1,13 +1,23 @@
 
 import React from 'react'
+import {Link , withRouter} from 'react-router-dom' 
+import {connect} from 'react-redux'
+import currencyDetailHeader from './currencyDetailHeader' 
 
 
 const CurrencyDetail = () => {
-   return (<div>
- 
-   </div>
+  return (
+   <currencyDetailHeader />
+  )
+}
 
+// export default CurrencyDetail 
+//painting
+
+const mapStateToProps = (store, ownProps) => ({
+   currencies: store.currencies.find(
+     currency => {return currency.id === ownProps.match.params.currencyId}
    )
-}  
+ })
 
-export default CurrencyDetail 
+ export default withRouter(connect(mapStateToProps, null)(CurrencyDetail));

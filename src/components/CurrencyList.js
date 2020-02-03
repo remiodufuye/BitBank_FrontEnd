@@ -3,12 +3,17 @@ import React from 'react'
 import CurrencyListItem from './CurrencyListItem'
 import {connect} from 'react-redux'
 import {Grid, Card} from 'semantic-ui-react'
+import SubHeader from './SubHeader'
 
 
 const CurrencyList = props => props.loading ? <p>Loading...</p> : (
 
         <div className ="ui container">
             <div>
+               <SubHeader /> 
+               <br />
+               <br /> 
+               <br /> 
                 <Grid columns="three" divided>
                 <Card.Group itemsPerRow={3}>
                 { props.currencies.map(currency => (
