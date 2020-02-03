@@ -39,6 +39,16 @@ class CurrencyDetail extends Component {
         </Container>
       </Card> 
       
+      {/* You Tube Embed  */}
+      
+      <Card>
+        <Container>
+          <p> <Card.Meta><strong>{this.props.currency.description}</strong></Card.Meta></p>
+        </Container>
+      </Card> 
+
+      
+      
       {/* Button  */}
       <Segment>
        <Button content='Buy' color= "green" icon='money bill alternate outline' labelPosition='left' />
@@ -47,7 +57,7 @@ class CurrencyDetail extends Component {
 
     </Container> 
 
-    
+
     ) ; 
   }
 } 
