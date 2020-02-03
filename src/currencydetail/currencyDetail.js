@@ -2,18 +2,18 @@
 import React, {Component} from 'react'
 import {Link , withRouter} from 'react-router-dom' 
 import {connect} from 'react-redux'
-import {Segment , Button , Embed , Container  , Card , Image} from 'semantic-ui-react'
+import {Segment , Button , Embed , Container  , Card , Image , Modal } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
 
 
 class CurrencyDetail extends Component {
+
   constructor() {
     super() 
     this.state = {
       showmodal: false 
     }
   }
-
 
   render() {
     // console.log("CurrencyDetail props", this.props) 
@@ -48,14 +48,13 @@ class CurrencyDetail extends Component {
       </Card> 
       
       {/* You Tube Embed  */}
-      {/* <Embed>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/41JCpzvnn_0" frameborder="0" allow="accelerometer;
-       autoplay; encrypted-media;
-       gyroscope; picture-in-picture" allowfullscreen>
-       </iframe>
-      </Embed> 
-      */}
-
+      
+      <Modal trigger={<Button>Show Modal</Button>}>
+      <Modal.Header>Select a Photo</Modal.Header>
+      <Modal.Content image>
+      <Image wrapped size='medium' src='/images/avatar/large/rachel.png' />
+      </Modal.Content>
+      </Modal> 
 
 
       {/* Button  */}
