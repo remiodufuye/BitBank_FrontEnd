@@ -1,6 +1,6 @@
 
 import {combineReducers} from 'redux'
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADDED_TO_PORTFOLIO , ADDED_TO_WATCHLIST} from './actionType'
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADD_TO_PORTFOLIO , ADD_TO_WATCHLIST} from './actionType'
 
 const loadingReducer = (oldState=false, action) => {
     switch(action.type) {
@@ -24,7 +24,7 @@ const currenciesReducer = (oldState=[] , action) => {
 
 const portfolioReducer = (oldState=[], action) => {
     switch(action.type) {
-        case ADDED_TO_PORTFOLIO:
+        case ADD_TO_PORTFOLIO:
             debugger
             return action.payload
             default:
@@ -35,7 +35,7 @@ const portfolioReducer = (oldState=[], action) => {
 
 const watchListReducer = (oldState=[], action) => {
     switch(action.type) {
-        case ADDED_TO_WATCHLIST: 
+        case ADD_TO_WATCHLIST: 
             return action.payload
             default:
             return oldState

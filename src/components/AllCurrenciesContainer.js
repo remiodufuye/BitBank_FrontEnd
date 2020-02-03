@@ -1,13 +1,26 @@
 
-import React  from 'react'
-// import { Image as ImageComponent, Item } from 'semantic-ui-react'
+import React , {Component} from 'react'
 import CurrencyList from './CurrencyList'
+import {Route , Switch } from "react-router-dom"
+import currencyDetail from '../currencydetail/currencyDetail' 
 
-const AllCurrenciesContainer = () => {
-    return(<div>
-          <CurrencyList /> 
+class AllCurrenciesContainer  extends Component{ 
+    render() {
+        return(
+        <div>
+            <Switch>
+                <Route 
+                path="/currencies/:currencyId"
+                component={currencyDetail}/>
+                <Route 
+                path="/"
+                component={CurrencyList}
+                />
+             <CurrencyList /> 
+            </Switch>
         </div>
-    )
+        )
+    }
 }
 
 export default AllCurrenciesContainer 
