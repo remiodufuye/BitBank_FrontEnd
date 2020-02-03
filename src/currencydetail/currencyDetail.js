@@ -2,11 +2,20 @@
 import React, {Component} from 'react'
 import {Link , withRouter} from 'react-router-dom' 
 import {connect} from 'react-redux'
-import {Segment , Button , Label , Container  , Card , Image} from 'semantic-ui-react'
+import {Segment , Button , Embed , Container  , Card , Image} from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
 
 
 class CurrencyDetail extends Component {
+
+  constructor() {
+    super() 
+    this.state = {
+      showmodal: false 
+    }
+  }
+
+
   render() {
     // console.log("CurrencyDetail props", this.props) 
     return !this.props.currency ? null : (
@@ -40,15 +49,16 @@ class CurrencyDetail extends Component {
       </Card> 
       
       {/* You Tube Embed  */}
-      
-      <Card>
-        <Container>
-          <p> <Card.Meta><strong>{this.props.currency.description}</strong></Card.Meta></p>
-        </Container>
-      </Card> 
+      {/* <Embed>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/41JCpzvnn_0" frameborder="0" allow="accelerometer;
+       autoplay; encrypted-media;
+       gyroscope; picture-in-picture" allowfullscreen>
+       </iframe>
+      </Embed> 
+      */}
 
       
-      
+
       {/* Button  */}
       <Segment>
        <Button content='Buy' color= "green" icon='money bill alternate outline' labelPosition='left' />
