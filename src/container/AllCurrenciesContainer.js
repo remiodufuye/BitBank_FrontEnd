@@ -1,8 +1,7 @@
 
 import React , {Component} from 'react'
-import CurrencyList from './CurrencyList'
-import {Route , Switch } from "react-router-dom"
-import currencyDetail from '../currencydetail/currencyDetail' 
+import CurrencyList from '../components/CurrencyList' 
+
 
 class AllCurrenciesContainer  extends Component{ 
     render() {

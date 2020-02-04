@@ -1,6 +1,6 @@
 
 import React from 'react'
-import CurrencyList from './CurrencyList'
+import CurrencyList from '../components/CurrencyList'
 
 const PortfolioContainer = () => {
    return(

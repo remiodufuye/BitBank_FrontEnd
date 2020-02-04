@@ -1,16 +1,14 @@
 import React , {Component} from 'react';
 import { Route , Switch , withRouter} from "react-router-dom"
 import '../App.css';
-import Navbar from './Navbar' 
+import Navbar from '../components/Navbar' 
 import AllCurrenciesContainer from './AllCurrenciesContainer'
-import PortfolioContainer from './PortfolioContainer'
-import WatchListContainer from './WatchListContainer'
+import PortfolioContainer from '../container/PortfolioContainer'
+import WatchListContainer from '../container/WatchListContainer'
 import {connect} from 'react-redux'
 import {fetchingCurrencies} from '../redux/actionCreators'
-import Footer from './Footer' 
 import currencyDetail from '../currencydetail/currencyDetail'
 
-// import MainContainer from './MainContainer' 
 
 class App extends Component {
   
@@ -27,9 +25,7 @@ class App extends Component {
            <Route path ="/watchlist" component={WatchListContainer}  />
            <Route path="/currencies/:currencyId" component={currencyDetail} />
            <Route path ="/" component={AllCurrenciesContainer}  />
-           {/* <Route path="/"component={CurrencyList}/> */}
        </Switch>
-       {/* <Footer />  */}
       </div>
     );
   }
