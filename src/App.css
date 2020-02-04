@@ -1,12 +1,12 @@
 
-/* 
-body::after {
+
+/* body::after {
   background: url('./images/BitBANK.png');
 }  */
 
  /* body::after {
   content: "";
-  background: url('./images/crypyo.jpg');
+  background: url('./images/bitcoin.jpeg');
   opacity: 0.5;
   top: 0;
   left: 0;
