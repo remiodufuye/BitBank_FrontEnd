@@ -47,6 +47,8 @@ class CurrencyDetail extends Component {
           <p> <Card.Meta><strong>{this.props.currency.description}</strong></Card.Meta></p>
         </Container>
       </Card> 
+
+      
       
       {/* You Tube Embed  */}
       

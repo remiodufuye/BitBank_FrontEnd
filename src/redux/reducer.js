@@ -42,12 +42,22 @@ const watchListReducer = (oldState=[], action) => {
     }
 }
 
+const currentUserReducer = (state={}, action) => {
+    switch(action.type) {
+      case "SET_CURRENT_USER":
+        return action.payload ? action.payload : state
+      default:
+        return state
+    }
+  } 
+
  
 const rootreducer = combineReducers({
     loading: loadingReducer ,
     currencies: currenciesReducer ,
     portfolio:portfolioReducer ,
-    watchlist: watchListReducer
+    watchlist: watchListReducer,
+    currentUser: currentUserReducer
 })
 
 

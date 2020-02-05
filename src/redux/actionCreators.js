@@ -1,5 +1,5 @@
 
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES , ADD_TO_WATCHLIST , ADD_TO_PORTFOLIO} from './actionType'
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES , ADD_TO_WATCHLIST , ADD_TO_PORTFOLIO , SET_CURRENT_USER} from './actionType'
 
 const URL = 'http://localhost:3000/currencies'
 
@@ -23,6 +23,12 @@ function addingToPortfolio(currencyID) {
         // this will dispatch  dispatch(addToPortfolio(currencyID))
     }
 }
+
+function setCurrentUser(user) {
+    return {type: SET_CURRENT_USER , payload: user}
+  }
+
+  
 
 function addtoWatchList(currencyID){
     return {type: ADD_TO_WATCHLIST , payload:currencyID}
