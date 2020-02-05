@@ -28,11 +28,6 @@ function addingToPortfolio(currencyID) {
     }
 }
 
-function setCurrentUser(user) {
-    return {type: SET_CURRENT_USER , payload: user}
-  }
-
-  
 
 function addtoWatchList(currencyID){
     return {type: ADD_TO_WATCHLIST , payload:currencyID}

@@ -19,10 +19,6 @@ const CurrencyList = props => props.loading ? <p>Loading...</p> : (
                <br /> 
                <br /> 
                <br /> 
-               <SearchBar /> 
-                <br /> 
-                <br /> 
-                <br /> 
                 <Grid columns="three" divided>
                 <Card.Group itemsPerRow={3}>
                 { props.currencies.filter(currency => currency.name.toLowerCase().includes(props.searchText.toLowerCase())).map(currency => (
