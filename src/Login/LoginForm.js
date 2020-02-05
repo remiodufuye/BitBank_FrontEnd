@@ -3,6 +3,7 @@ import {Button , Form , Segment , Message} from 'semantic-ui-react'
 import {withRouter} from 'react-router-dom' 
 
 class LoginForm extends Component {
+    
             state = {
                 username: '',
                 password: ''
@@ -19,13 +20,21 @@ class LoginForm extends Component {
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
                         username: this.state.username,
-                        password: this.state.password
+                        password: this.state.password 
                     })
                 }).then(res => res.json())
-                .then(loggedInUser => this.props.updateUser(loggedInUser))
+                // .then(loggedInUser => this.props.updateUser(loggedInUser))
+                  .then(data => {
+                      console.log("fetch complete" , data )
+                      if(!data.error){
+                          this.props.updateUser(data)
+                      } else {
+                          alert(data.message) 
+                      }
+                  })
             }
-            
-            render() {
+
+            render() { 
                 return (
                     <Segment>
                         <Form
@@ -39,6 +48,7 @@ class LoginForm extends Component {
                             error
                             header={this.props.failedLogin ? this.props.error : null}
                             />
+
                           <Form.Group widths='equal'>
                             <Form.Input 
                                 label='username'
@@ -47,6 +57,7 @@ class LoginForm extends Component {
                                 onChange={this.handleChange}
                                 value={this.state.username}
                             />  
+
                             <Form.Input 
                                 type='password'
                                 label='password'
@@ -56,7 +67,10 @@ class LoginForm extends Component {
                                 value={this.state.password}
                             />
                           </Form.Group>  
+
                           <Button type='submit'>Login</Button>
+
+
                         </Form>
                     </Segment>
                 )

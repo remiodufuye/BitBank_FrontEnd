@@ -8,8 +8,12 @@ const Navbar = () => (
     <Link to="/" class ="item">
     <Header as='h2' floated='left' ><Icon name="dollar sign"/>BitBANK</Header>
     </Link>
-    <NavLink to="/" activeClassName="active item" className="item">
+    {/* <NavLink to="/login" activeClassName="active item" className="item">
+    <Header as='h4' floated='right'><Icon name="sign-out"/> Logout</Header>
+    </NavLink> */}
+    <NavLink to="/login" activeClassName="active item" className="item">
     <Header as='h4' floated='right'><Icon name="user secret"/> Login</Header>
+    {/*  for icon use : 'user secret' or 'sign-in' */}
     </NavLink>
     <NavLink to="/portfolio" activeClassName="active item" className="item">
     <Header as='h4' floated='right'><Icon name="suitcase"/>Portfolio</Header>

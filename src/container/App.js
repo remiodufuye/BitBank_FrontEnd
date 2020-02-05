@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import { Route , Switch , withRouter} from "react-router-dom"
+import { Route , Switch , withRouter , Redirect} from "react-router-dom"
 import '../App.css';
 import Navbar from '../Login/Navbar' 
 import AllCurrenciesContainer from './AllCurrenciesContainer'
@@ -8,6 +8,7 @@ import WatchListContainer from '../container/WatchListContainer'
 import {connect} from 'react-redux'
 import {fetchingCurrencies} from '../redux/actionCreators'
 import currencyDetail from '../currencydetail/currencyDetail'
+import LoginForm from '../Login/LoginForm' 
 
 
 class App extends Component {
@@ -22,11 +23,22 @@ class App extends Component {
     this.props.fetchingCurrencies()
   }
 
+  logout = () => {
+    this.setState({currentUser: null})
+  }
+
+  updateUser = (user) => {
+    this.setState({currentUser: user})
+  } 
+
+  
+
   render() {
     return (
       <div className="App">
         <Navbar />
         <Switch>
+           <Route exact path ="/login" render={() => this.state.currentUser ? <Redirect to='/' />: <LoginForm updateUser={this.updateUser}/>} />
            <Route path ="/portfolio" component={PortfolioContainer}  />
            <Route path ="/watchlist" component={WatchListContainer}  />
            <Route path="/currencies/:currencyId" component={currencyDetail} />
@@ -36,6 +48,7 @@ class App extends Component {
     );
   }
 }
+
 
 const mapDispatchToProps = (dispatch) => ({
   fetchingCurrencies: () => {dispatch(fetchingCurrencies())} ,
