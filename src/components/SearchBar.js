@@ -1,17 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux' 
+import { Icon, Input } from 'semantic-ui-react'
 
 
- const  Searchbar = ()  => {
-        return (
-            <div className='App'>
-                <input 
-                    className='search'
-                    placeholder="Search For Coin"
-                />
-            </div>
-        )
-}
+ const  Searchbar = ()  => (
+    <Input
+    icon={<Icon name='search' inverted circular link />}
+    placeholder='Search for Coin ...'
+  />
+ ) 
+
 
 const mapStateToProps = (state) => {
     return {
@@ -20,3 +18,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect()(Searchbar) 
+

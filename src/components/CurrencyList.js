@@ -4,6 +4,7 @@ import CurrencyListItem from './CurrencyListItem'
 import {connect} from 'react-redux'
 import {Grid, Card} from 'semantic-ui-react'
 import SubHeader from './SubHeader'
+import Searchbar from '../components/SearchBar'
 
 
 const CurrencyList = props => props.loading ? <p>Loading...</p> : (
@@ -12,6 +13,10 @@ const CurrencyList = props => props.loading ? <p>Loading...</p> : (
             <div>
                <SubHeader /> 
                <br />
+               <br /> 
+                <Searchbar /> 
+               <br /> 
+               <br /> 
                <br /> 
                <br /> 
                 <Grid columns="three" divided>

@@ -7,7 +7,7 @@ class AllCurrenciesContainer  extends Component{
     render() {
         return(
         <div>
-    
+
              <CurrencyList /> 
         
         </div>

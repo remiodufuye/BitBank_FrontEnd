@@ -5,16 +5,37 @@ import {connect} from 'react-redux'
 import {Segment , Button , Embed , Container  , Card , Image , Modal } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
 import {addingToWatchList} from '../redux/actionCreators' 
+// import Chart from 'chart.js' 
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
 
 class CurrencyDetail extends Component {
 
-  // constructor() {
-  //   super() 
-  //   this.state = {
-  //     showmodal: false 
-  //   }
-  // }
+
+  constructor() {
+
+    super() 
+
+    this.state = {
+      showmodal: false 
+    }
+
+    this.options = {
+      chart: {
+        type: 'spline'
+      },
+      title: {
+        text: 'My chart'
+      },
+      series: [
+        {
+          data: [1, 2, 1, 4, 3, 6]
+        }
+      ]
+    };
+
+  }
 
   render() {
     // console.log("CurrencyDetail props", this.props) 
@@ -48,6 +69,9 @@ class CurrencyDetail extends Component {
         </Container>
       </Card> 
 
+      {/* high chart  */}
+  
+      <HighchartsReact highcharts={Highcharts} options={this.options} />
       
       
       {/* You Tube Embed  */}
