@@ -5,7 +5,7 @@ const URL = 'http://localhost:3000/currencies'
 
 
 function loadingCurrencies() {
-    return {type: LOADING_CURRENCIES}
+    return {type: LOADING_CURRENCIES} 
 }
 
 function fetchedCurrencies(currencyArray) {

@@ -8,12 +8,15 @@ const Navbar = (props) => (
     <Link to="/" class ="item">
     <Header as='h2' floated='left' ><Icon name="dollar sign"/>BitBANK</Header>
     </Link>
-    <NavLink to="/login" activeClassName="active item" className="item">
     { !props.currentUser ?  
-    <Header as='h4' floated='right'><Icon name="user secret"/> Login </Header> : 
-    <Header as='h4' floated='right'><Icon name="sign-out" onClick={props.logout}/> Logout</Header> 
-    } 
+    <NavLink to="/login" activeClassName="active item" className="item">
+    <Header as='h4' floated='right'><Icon name="user secret"/> Login </Header>
     </NavLink>
+     : 
+     <div onClick={props.logout} >
+     <Header as='h4' floated='right'><Icon name="sign-out" /> Logout</Header> 
+     </div>
+    } 
     <NavLink to="/portfolio" activeClassName="active item" className="item">
     <Header as='h4' floated='right'><Icon name="suitcase"/>Portfolio</Header>
     </NavLink>

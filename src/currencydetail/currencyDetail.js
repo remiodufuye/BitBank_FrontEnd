@@ -1,19 +1,20 @@
 
 import React, {Component} from 'react'
-import {Link , withRouter} from 'react-router-dom' 
+import {withRouter} from 'react-router-dom' 
 import {connect} from 'react-redux'
 import {Segment , Button , Embed , Container  , Card , Image , Modal } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
+import {addingToWatchList} from '../redux/actionCreators' 
 
 
 class CurrencyDetail extends Component {
 
-  constructor() {
-    super() 
-    this.state = {
-      showmodal: false 
-    }
-  }
+  // constructor() {
+  //   super() 
+  //   this.state = {
+  //     showmodal: false 
+  //   }
+  // }
 
   render() {
     // console.log("CurrencyDetail props", this.props) 
@@ -27,7 +28,7 @@ class CurrencyDetail extends Component {
         <Card.Meta><strong>Symbol: {this.props.currency.symbol}</strong></Card.Meta>
          <Card.Meta>
           <strong>Price:
-          <NumberFormat value={this.props.currency.price} displayType={'text'} thousandSeparator={true} prefix={' $'} /></strong>
+          <NumberFormat value={this.props.currency.price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></strong>
          </Card.Meta>
          <Card.Meta>
           <strong>Max Supply:
@@ -60,7 +61,9 @@ class CurrencyDetail extends Component {
       {/* Button  */}
       <Segment>
        <Button content='Buy' color= "green" icon='money bill alternate outline' labelPosition='left' />
+
        <Button content='Watch' color ="blue" icon='eye' labelPosition='right' />
+
        </Segment> 
 
     </Container> 
@@ -77,6 +80,11 @@ const mapStateToProps = (store, ownProps) => ({
    )
  })
 
- export default withRouter(connect(mapStateToProps,null)(CurrencyDetail));
+ const mapDispatchToProps = (dispatch) => ({
+    watch: (currencyId) => {dispatch(addingToWatchList(currencyId))}
+ })
+
+
+ export default withRouter(connect(mapStateToProps,mapDispatchToProps)(CurrencyDetail));
 
 
