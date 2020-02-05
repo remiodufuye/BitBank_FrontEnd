@@ -1,12 +1,7 @@
 
 import React from 'react'
 import { Card , Image , Button } from 'semantic-ui-react'
-import { Link, withRouter } from "react-router-dom";
-import currencyDetail from '../currencydetail/currencyDetail'
-// import {addedToPortfolio} from '../redux/actionCreators' 
-// import {connect} from 'react-redux' 
-
-{/* <Link className="item" to={`/paintings/${props.painting.id}`}> */}
+import { Link } from "react-router-dom";
 
 const CurrencyListItem = props =>  (
       <Card>
@@ -32,16 +27,7 @@ const CurrencyListItem = props =>  (
     </Card> 
   ) ; 
   
-  // export default withRouter(connect(null,mapDispatchToProps)(CurrencyListItem)) ; 
    export default CurrencyListItem 
-
-  // add to portfolio 
-  // const mapDispatchToProps = (dispatch) => ({
-  //    buy: ()=>{dispatch(addedToPortfolio())}
-
-  // })
-
-// export default withRouter(connect(null,mapDispatchToProps)(CurrencyListItem)) ; 
 
 
 

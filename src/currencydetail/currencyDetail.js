@@ -5,18 +5,26 @@ import {connect} from 'react-redux'
 import {Segment , Button , Embed , Container  , Card , Image , Modal } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
 import {addingToWatchList} from '../redux/actionCreators' 
+<<<<<<< HEAD
 // import Chart from 'chart.js' 
+=======
+>>>>>>> development
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
 
 class CurrencyDetail extends Component {
 
+<<<<<<< HEAD
 
   constructor() {
 
     super() 
 
+=======
+  constructor() {
+    super() 
+>>>>>>> development
     this.state = {
       showmodal: false 
     }
@@ -26,7 +34,11 @@ class CurrencyDetail extends Component {
         type: 'spline'
       },
       title: {
+<<<<<<< HEAD
         text: 'My chart'
+=======
+        text: 'Percentage Change Chart'
+>>>>>>> development
       },
       series: [
         {
@@ -74,6 +86,11 @@ class CurrencyDetail extends Component {
       <HighchartsReact highcharts={Highcharts} options={this.options} />
       
       
+       {/* high charts */}
+
+       <HighchartsReact highcharts={Highcharts} options={this.options} />
+    
+
       {/* You Tube Embed  */}
       
       <Modal trigger={<Button>Show Modal</Button>}>
@@ -87,9 +104,7 @@ class CurrencyDetail extends Component {
       {/* Button  */}
       <Segment>
        <Button content='Buy' color= "green" icon='money bill alternate outline' labelPosition='left' />
-
        <Button content='Watch' color ="blue" icon='eye' labelPosition='right' />
-
        </Segment> 
 
     </Container> 

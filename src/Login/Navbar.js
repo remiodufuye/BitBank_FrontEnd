@@ -13,9 +13,11 @@ const Navbar = (props) => (
     <Header as='h4' floated='right'><Icon name="user secret"/> Login </Header>
     </NavLink>
      : 
+     <Link>
      <div onClick={props.logout} >
      <Header as='h4' floated='right'><Icon name="sign-out" /> Logout</Header> 
      </div>
+     </Link> 
     } 
     <NavLink to="/portfolio" activeClassName="active item" className="item">
     <Header as='h4' floated='right'><Icon name="suitcase"/>Portfolio</Header>
