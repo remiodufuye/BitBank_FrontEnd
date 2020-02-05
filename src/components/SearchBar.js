@@ -1,22 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux' 
+import {onSearch} from '../redux/actionCreators' 
 
 
- const  Searchbar = ()  => {
-        return (
-            <div className='App'>
-                <input 
-                    className='search'
-                    placeholder="Search For Coin"
-                />
-            </div>
-        )
-}
+ const  Searchbar = props  => (
+    <div class="ui icon input">
+    <input type="text" 
+    placeholder="Search for Coin..." 
+    value={props.value}
+    onChange={(e) => props.onSearch(e.target.value)}
+    />
+    <i aria-hidden="true" class="search circular inverted link icon"></i>
+   </div>
+)
+  
+ const mapStateToProps = (store) => ({
+    value: store.searchText
+  })
+  
 
-const mapStateToProps = (state) => {
-    return {
+export default connect(mapStateToProps,{onSearch})(Searchbar) 
 
-    }
-}
-
-export default connect()(Searchbar) 
