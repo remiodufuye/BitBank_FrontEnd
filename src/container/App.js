@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Navbar currentUser={this.state.currentUser} logout={this.logout}/>
         <Switch>
            <Route exact path ="/login" render={() => this.state.currentUser ? <Redirect to='/' />: <LoginForm updateUser={this.updateUser}/>} />
            <Route path ="/portfolio" component={PortfolioContainer}  />
@@ -47,7 +47,7 @@ class App extends Component {
       </div>
     );
   }
-}
+} 
 
 
 const mapDispatchToProps = (dispatch) => ({
