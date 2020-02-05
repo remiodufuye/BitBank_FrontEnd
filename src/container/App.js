@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import { Route , Switch , withRouter} from "react-router-dom"
 import '../App.css';
-import Navbar from '../components/Navbar' 
+import Navbar from '../Login/Navbar' 
 import AllCurrenciesContainer from './AllCurrenciesContainer'
 import PortfolioContainer from '../container/PortfolioContainer'
 import WatchListContainer from '../container/WatchListContainer'
@@ -12,6 +12,12 @@ import currencyDetail from '../currencydetail/currencyDetail'
 
 class App extends Component {
   
+  constructor(){
+    super()
+    this.state ={currentUser :null }
+  } 
+
+
   componentDidMount(){
     this.props.fetchingCurrencies()
   }
