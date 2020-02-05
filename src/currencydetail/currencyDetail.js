@@ -69,13 +69,8 @@ class CurrencyDetail extends Component {
   
       <HighchartsReact highcharts={Highcharts} options={this.options} />
       
-      
-       {/* high charts */}
 
-       <HighchartsReact highcharts={Highcharts} options={this.options} />
-    
-
-      {/* You Tube Embed  */}
+      {/* You Tube Embed  */} 
       
       <Modal trigger={<Button>Show Modal</Button>}>
       <Modal.Header>Select a Photo</Modal.Header>
