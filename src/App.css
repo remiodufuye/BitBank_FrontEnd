@@ -1,14 +1,16 @@
 
 
 /* use from these images 
-   crypto.jpg
+   crypyo.jpg
    cryptocurrency.jpg 
    bitcoin-matrix.jpg
 }  */
 
+/* body::after */
+
   body::after {
   content: "";
-  background: url('./images/crypto.jpg');
+  background-image: url('./images/crypto.jpg');
   opacity: 0.5;
   top: 0;
   left: 0;
