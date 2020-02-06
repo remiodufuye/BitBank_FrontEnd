@@ -113,7 +113,6 @@ class CurrencyDetail extends Component {
 
     </Container> 
 
-
     ) ; 
   }
 } 
