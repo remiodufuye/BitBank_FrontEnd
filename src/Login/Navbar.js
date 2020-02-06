@@ -4,6 +4,7 @@ import {Link, NavLink,withRouter} from "react-router-dom";
 import {Segment, Header , Icon , Menu } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {loggedOut} from '../redux/actionCreators'
+import swal from 'sweetalert'
 
 
 class Navbar extends Component{
@@ -46,10 +47,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         loggedOut: () => {
+          swal("Good Bye!", "Sucessfully signed out!!", "success")
             dispatch(loggedOut())
         }
     }
-}
+} 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
 

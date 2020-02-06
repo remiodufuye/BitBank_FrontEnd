@@ -3,6 +3,7 @@ import {Button , Form , Segment , Message} from 'semantic-ui-react'
 import {withRouter} from 'react-router-dom' 
 import {connect } from 'react-redux' 
 import {fetchedUser} from '../redux/actionCreators'
+import swal from 'sweetalert'
 
 class LoginForm extends Component {
     
@@ -30,6 +31,7 @@ class LoginForm extends Component {
                       console.log("fetch complete" , data )
                       if(!data.error){
                           this.props.fetchedUser(data)
+                          swal("Welcome!", "Login Sucessful!", "success")
                       } else {
                           alert(data.message) 
                       }
