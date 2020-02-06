@@ -93,11 +93,10 @@ class CurrencyDetail extends Component {
       <Link>
       <Modal trigger={<Button>You Tube Video </Button>}>
       <Modal.Header>{this.props.currency.name}  Explained</Modal.Header>
-      <Modal.Content image>
-      <Image wrapped size='medium' src='/images/avatar/large/rachel.png' />
-      </Modal.Content>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/41JCpzvnn_0" frameborder="0" 
+      allow="accelerometer;  autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
       </Modal> 
-      </Link> 
+      </Link>  
 
       {/* coin market cap explorer  */}
 
