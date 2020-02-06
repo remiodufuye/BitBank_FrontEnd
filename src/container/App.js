@@ -14,33 +14,33 @@ import swal from 'sweetalert'
 
 class App extends Component {
   
-  constructor(){
-    super()
-    this.state ={currentUser :null }
-  } 
+  // constructor(){
+  //   super()
+  //   this.state ={currentUser :null }
+  // } 
 
 
   componentDidMount(){
     this.props.fetchingCurrencies()
   }
 
-  logout = () => {
-    this.setState({currentUser: null}) 
-    swal("Good Bye!", "Sucessfully signed out!!", "success")
-  }
+  // logout = () => {
+  //   this.setState({currentUser: null}) 
+  //   swal("Good Bye!", "Sucessfully signed out!!", "success")
+  // }
 
-  updateUser = (user) => {
-    this.setState({currentUser: user})
-  } 
+  // updateUser = (user) => {
+  //   this.setState({currentUser: user})
+  // } 
 
   
 
   render() {
     return (
       <div className="App">
-        <Navbar currentUser={this.state.currentUser} logout={this.logout}/>
+        <Navbar/>
         <Switch>
-           <Route exact path ="/login" render={() => this.state.currentUser ? <Redirect to='/' />: <LoginForm updateUser={this.updateUser}/>} />
+           <Route exact path ="/login" render={() => this.props.user ? <Redirect to='/' />: <LoginForm/>} />
            <Route path ="/portfolio" component={PortfolioContainer}  />
            <Route path ="/watchlist" component={WatchListContainer}  />
            <Route path="/currencies/:currencyId" component={currencyDetail} />
@@ -51,10 +51,15 @@ class App extends Component {
   }
 } 
 
+const mapStateToProps = state => {
+  return {
+    user: state.currentUser
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   fetchingCurrencies: () => {dispatch(fetchingCurrencies())} ,
 })
 
-export default withRouter(connect(null,mapDispatchToProps) (App)) ; 
+export default withRouter(connect(mapStateToProps,mapDispatchToProps) (App)) ; 
 

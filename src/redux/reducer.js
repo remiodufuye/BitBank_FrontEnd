@@ -1,6 +1,7 @@
 
 import {combineReducers} from 'redux'
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADD_TO_PORTFOLIO , ADD_TO_WATCHLIST , CHANGING_SEARCH_TEXT} from './actionType'
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADD_TO_PORTFOLIO , 
+    ADD_TO_WATCHLIST , CHANGING_SEARCH_TEXT , LOGGED_IN , LOGGED_OUT} from './actionType'
 
 const loadingReducer = (oldState=false, action) => {
     switch(action.type) {
@@ -51,13 +52,25 @@ const searchTextReducer = (oldState="", action) => {
     }
   }
 
+
+  const userReducer = (oldState=null, action) => {
+    switch(action.type) {
+        case LOGGED_IN:
+            return action.payload
+       case LOGGED_OUT:
+           return action.payload
+       default:
+           return oldState
+    }
+}
  
 const rootreducer = combineReducers({
     loading: loadingReducer ,
     currencies: currenciesReducer ,
     portfolio:portfolioReducer ,
     watchlist: watchListReducer,
-    searchText: searchTextReducer
+    searchText: searchTextReducer,
+    currentUser: userReducer
 })
 
 

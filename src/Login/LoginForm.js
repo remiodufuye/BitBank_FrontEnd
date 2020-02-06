@@ -1,6 +1,8 @@
 import React , {Component} from 'react'
 import {Button , Form , Segment , Message} from 'semantic-ui-react' 
 import {withRouter} from 'react-router-dom' 
+import {connect } from 'react-redux' 
+import {fetchedUser} from '../redux/actionCreators'
 
 class LoginForm extends Component {
     
@@ -27,7 +29,7 @@ class LoginForm extends Component {
                   .then(data => {
                       console.log("fetch complete" , data )
                       if(!data.error){
-                          this.props.updateUser(data)
+                          this.props.fetchedUser(data)
                       } else {
                           alert(data.message) 
                       }
@@ -78,6 +80,16 @@ class LoginForm extends Component {
 
 } 
 
-export default withRouter(LoginForm)
+const mapDispatchToProps = dispatch => {
+    return {
+      fetchedUser: (user) => {
+        dispatch(fetchedUser(user))
+      }
+    }
+  }
+  
+
+export default connect(null,mapDispatchToProps)(LoginForm)
+
 
 

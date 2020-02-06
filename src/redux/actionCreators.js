@@ -1,11 +1,19 @@
 
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES , ADD_TO_WATCHLIST , ADD_TO_PORTFOLIO ,CHANGING_SEARCH_TEXT } from './actionType'
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES , ADD_TO_WATCHLIST , ADD_TO_PORTFOLIO ,CHANGING_SEARCH_TEXT , LOGGED_IN ,LOGGED_OUT } from './actionType'
 
 const URL = 'http://localhost:3000/currencies'
 
 function onSearch(searchText){
     return {type: CHANGING_SEARCH_TEXT, payload: searchText}
   }
+
+function fetchedUser(userObject) {
+    return {type: LOGGED_IN, payload: userObject}
+} 
+
+function loggedOut() {
+    return {type: LOGGED_OUT, payload: null}
+}
 
 
 function loadingCurrencies() {
@@ -51,4 +59,4 @@ function fetchingCurrencies(){
     }
 }
 
-export {fetchingCurrencies,addingToPortfolio,addingToWatchList, onSearch} 
+export {fetchingCurrencies,addingToPortfolio,addingToWatchList, onSearch , fetchedUser , loggedOut} 

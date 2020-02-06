@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import {withRouter , Link } from 'react-router-dom' 
 import {connect} from 'react-redux'
-import {Segment , Button , Embed , Container  , Card , Image , Modal } from 'semantic-ui-react'
+import {Segment , Button , Header , Container  , Card , Image , Modal } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
 import {addingToWatchList} from '../redux/actionCreators' 
 import Highcharts from 'highcharts';
@@ -51,7 +51,7 @@ class CurrencyDetail extends Component {
       <Segment>
       <Card.Content >
         <Image floated='right' size='mini'src={this.props.currency.logo}/>
-        <Card.Header> {this.props.currency.name}</Card.Header>
+        <Header as="h1"> {this.props.currency.name}</Header>
         <Card.Meta><strong>Symbol: {this.props.currency.symbol}</strong></Card.Meta>
          <Card.Meta>
           <strong>Price:
@@ -81,11 +81,9 @@ class CurrencyDetail extends Component {
       <br /> 
       {/* For Description */} 
       <Segment>
-  
           <Card.Content>
             <p> <Card.Meta><strong>{this.props.currency.description}</strong></Card.Meta></p>
           </Card.Content>
-  
       </Segment>
 
 
