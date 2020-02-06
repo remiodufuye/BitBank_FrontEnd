@@ -23,23 +23,23 @@ class CurrencyDetail extends Component {
     this.state = {
       showmodal: false 
     }
-
-    this.options = {
-      chart: {
-        type: 'spline'
-      },
-      title: {
-        text: '% Price Change'
-      },
-      series: [
-        {
-          name: 'Percentage Change This Week',
-          data: [props.currency.percentage_change_1h , 
-          props.currency.percentage_change_24h ,
-           props.currency.percentage_change_7d] 
-        }
-      ]
-    };
+    
+      this.options = {
+        chart: {
+          type: 'spline'
+        },
+        title: {
+          text: '% Price Change'
+        },
+        series: [
+          {
+            name: 'Percentage Change This Week',
+            data: [props.currency.percentage_change_1h , 
+            props.currency.percentage_change_24h ,
+            props.currency.percentage_change_7d] 
+          }
+        ]
+      }
 
   } 
 
@@ -47,8 +47,8 @@ class CurrencyDetail extends Component {
     // console.log("CurrencyDetail props", this.props) 
     return !this.props.currency ? null : (
     <Container>
-
-      <Card>
+      {/* <Card > */}
+      <Segment>
       <Card.Content >
         <Image floated='right' size='mini'src={this.props.currency.logo}/>
         <Card.Header> {this.props.currency.name}</Card.Header>
@@ -66,32 +66,44 @@ class CurrencyDetail extends Component {
           <em><NumberFormat value={this.props.currency.market_cap} displayType={'text'} thousandSeparator={true} prefix={'$'}/></em></strong>
          </Card.Meta>
       </Card.Content> 
-      </Card>  
-
-      {/* For Description */} 
-      <Card>
-        <Container>
-          <p> <Card.Meta><strong>{this.props.currency.description}</strong></Card.Meta></p>
-        </Container>
-      </Card> 
-
+      </Segment>
+      {/* </Card>   */}
+   
+      <br />  
       {/* high chart  */}
       {(this.props.currency.percentage_change_1h && 
       this.props.currency.percentage_change_24h && 
       this.props.currency.percentage_change_7d !== null ) ? 
-      <HighchartsReact highcharts={Highcharts} options={this.options} /> : < NoDataAvailable  currency ={this.props.currency.name}/>
+      <HighchartsReact highcharts={Highcharts} options={this.options} /> : 
+      < NoDataAvailable  currency ={this.props.currency.name}/> 
       } 
+      
+      <br /> 
+      {/* For Description */} 
+      <Segment>
+  
+          <Card.Content>
+            <p> <Card.Meta><strong>{this.props.currency.description}</strong></Card.Meta></p>
+          </Card.Content>
+  
+      </Segment>
 
 
       {/* You Tube Embed  */} 
       <Link>
       <Modal trigger={<Button>You Tube Video </Button>}>
-      <Modal.Header>Select a Photo</Modal.Header>
+      <Modal.Header>{this.props.currency.name}  Explained</Modal.Header>
       <Modal.Content image>
       <Image wrapped size='medium' src='/images/avatar/large/rachel.png' />
       </Modal.Content>
       </Modal> 
       </Link> 
+
+      {/* coin market cap explorer  */}
+
+      <Link>
+      <Button onclick={this.props.currency.coin_market_cap_explorer}> Coin Explorer </Button>
+      </Link>
 
       
       {/* Button  */}
