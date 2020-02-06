@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react'
-import {withRouter} from 'react-router-dom' 
+import {withRouter , Link } from 'react-router-dom' 
 import {connect} from 'react-redux'
 import {Segment , Button , Embed , Container  , Card , Image , Modal } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
@@ -22,7 +22,7 @@ class CurrencyDetail extends Component {
         type: 'spline'
       },
       title: {
-        text: 'Percentage Change Chart'
+        text: '% Price Change'
       },
       series: [
         {
@@ -31,7 +31,7 @@ class CurrencyDetail extends Component {
       ]
     };
 
-  }
+  } 
 
   render() {
     // console.log("CurrencyDetail props", this.props) 
@@ -66,20 +66,20 @@ class CurrencyDetail extends Component {
       </Card> 
 
       {/* high chart  */}
-  
       <HighchartsReact highcharts={Highcharts} options={this.options} />
-      
+
 
       {/* You Tube Embed  */} 
-      
-      <Modal trigger={<Button>Show Modal</Button>}>
+      <Link>
+      <Modal trigger={<Button>You Tube Video </Button>}>
       <Modal.Header>Select a Photo</Modal.Header>
       <Modal.Content image>
       <Image wrapped size='medium' src='/images/avatar/large/rachel.png' />
       </Modal.Content>
       </Modal> 
+      </Link> 
 
-
+      
       {/* Button  */}
       <Segment>
        <Button content='Buy' color= "green" icon='money bill alternate outline' labelPosition='left' />

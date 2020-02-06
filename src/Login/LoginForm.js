@@ -47,9 +47,8 @@ class LoginForm extends Component {
                           <Message
                             error
                             header={this.props.failedLogin ? this.props.error : null}
-                            />
+                            /> 
 
-                          <Form.Group widths='equal'>
                             <Form.Input 
                                 label='username'
                                 placeholder='username'
@@ -66,7 +65,7 @@ class LoginForm extends Component {
                                 onChange={this.handleChange}
                                 value={this.state.password}
                             />
-                          </Form.Group>  
+                         
 
                           <Button type='submit'>Login</Button>
 
@@ -80,3 +79,5 @@ class LoginForm extends Component {
 } 
 
 export default withRouter(LoginForm)
+
+

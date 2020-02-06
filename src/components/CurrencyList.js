@@ -7,7 +7,7 @@ import SubHeader from './SubHeader'
 import Searchbar from '../components/SearchBar'
 
 
-const CurrencyList = props => props.loading ? <p>Loading...</p> : (
+const CurrencyList = props => props.loading ? <p>Loading Currencies...</p> : (
 
         <div className ="ui container">
             <div>
