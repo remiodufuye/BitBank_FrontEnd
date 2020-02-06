@@ -1,8 +1,9 @@
 
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES , ADD_TO_WATCHLIST , ADD_TO_PORTFOLIO ,CHANGING_SEARCH_TEXT 
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES , ADD_TO_WATCHITEMS , ADD_TO_PORTFOLIO ,CHANGING_SEARCH_TEXT 
     , LOGGED_IN ,LOGGED_OUT } from './actionType'
 
-const URL = 'http://localhost:3000/currencies'
+const currencies = 'http://localhost:3000/currencies'
+const watchitems = 'http://localhost:3000/watchitems' 
 
 function onSearch(searchText){
     return {type: CHANGING_SEARCH_TEXT, payload: searchText}
@@ -38,26 +39,26 @@ function addingToPortfolio(currencyID) {
 }
 
 
-function addtoWatchList(currencyID){
-    return {type: ADD_TO_WATCHLIST , payload:currencyID}
+function addtoWatchItem(currencyID){
+    return {type: ADD_TO_WATCHITEMS , payload:currencyID}
 }
 
-function addingToWatchList(currencyID) {
+function addingToWatchItems(currencyID) { 
     return (dispatch,getState) => {
         console.log(`in adding to watchlist${currencyID}`) 
         // this will dispatch :  dispatch(addtoWatchList(currencyID))
     }
-}
+} 
 
 function fetchingCurrencies(){
     return (dispatch) => {
         dispatch(loadingCurrencies())
-         fetch(URL)
+         fetch(currencies)
         .then(response => response.json()) 
         .then(currencyArray => {
          dispatch(fetchedCurrencies(currencyArray))
         })
-    }
+    } 
 }
 
-export {fetchingCurrencies,addingToPortfolio,addingToWatchList, onSearch , fetchedUser , loggedOut} 
+export {fetchingCurrencies,addingToPortfolio, addingToWatchItems, onSearch , fetchedUser , loggedOut} 

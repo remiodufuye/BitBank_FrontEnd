@@ -4,17 +4,14 @@ import {withRouter , Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Segment , Button , Header , Container  , Card , Image , Modal } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
-import {addingToWatchList} from '../redux/actionCreators' 
+import {addingToWatchItems} from '../redux/actionCreators' 
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import drilldown from 'highcharts/modules/drilldown' 
 import NoDataAvailable from './NoDataAvailable'
 
 
-
-
 drilldown(Highcharts)
-
 
 class CurrencyDetail extends Component {
 
@@ -41,7 +38,7 @@ class CurrencyDetail extends Component {
         ]
       } 
 
-  } 
+  }  
 
   render() {
     // console.log("CurrencyDetail props", this.props) 
@@ -91,7 +88,7 @@ class CurrencyDetail extends Component {
       <Link>
       <Modal trigger={<Button>You Tube Video </Button>}>
       <Modal.Header>{this.props.currency.name}  Explained</Modal.Header>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Pl8OlkkwRpc" frameborder="0" 
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Pl8OlkkwRpc" frameborder="0" 
       allow="accelerometer;  autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen></iframe> 
       </Modal> 
       </Link>  
@@ -99,14 +96,27 @@ class CurrencyDetail extends Component {
       {/* coin market cap explorer  */}
 
       <Link>
-      <Button onclick={this.props.currency.coin_market_cap_explorer}> Coin Explorer </Button>
+      <Button onClick={this.props.currency.coin_market_cap_explorer}> Coin Explorer </Button>
       </Link>
 
       
       {/* Button  */}
       <Segment>
-       <Button content='Buy' color= "green" icon='money bill alternate outline' labelPosition='left' />
-       <Button content='Watch' color ="blue" icon='eye' labelPosition='right' />
+       <Button 
+       content='Buy' 
+       color= "green" 
+       icon='money bill alternate outline' 
+       labelPosition='left' 
+
+       /> 
+
+       <Button 
+       content='Watch' 
+       color ="blue" 
+       icon='eye' 
+       labelPosition='right' 
+        onClick={this.props.addingToWatchItems(this.props.currency.coin_id)}
+       />
        </Segment> 
 
     </Container> 
@@ -119,11 +129,11 @@ class CurrencyDetail extends Component {
 const mapStateToProps = (store, ownProps) => ({
   currency: store.currencies.find(
      currency => {return currency.coin_id === parseInt(ownProps.match.params.currencyId)}
-   )
+   ) ,  user: store.currentUser
  })
 
  const mapDispatchToProps = (dispatch) => ({
-    watch: (currencyId) => {dispatch(addingToWatchList(currencyId))}
+  addingToWatchItems: (currencyId) => {dispatch(addingToWatchItems(currencyId))}
  })
 
 

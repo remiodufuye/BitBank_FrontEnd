@@ -11,13 +11,11 @@ import currencyDetail from '../currencydetail/currencyDetail'
 import LoginForm from '../Login/LoginForm' 
 
 
-
 class App extends Component {
   
   componentDidMount(){
     this.props.fetchingCurrencies()
   }
-
 
   render() {
     return (
