@@ -53,7 +53,7 @@ class CurrencyDetail extends Component {
          </Card.Meta>
          <Card.Meta>
           <strong>Market Cap:
-          <NumberFormat value={this.props.currency.market_cap} displayType={'text'} thousandSeparator={true} /></strong>
+          <em><NumberFormat value={this.props.currency.market_cap} displayType={'text'} thousandSeparator={true} prefix={'$'}/></em></strong>
          </Card.Meta>
       </Card.Content> 
       </Card>  
