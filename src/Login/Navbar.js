@@ -1,7 +1,7 @@
 
 import React , {Component} from 'react'; 
-import {Link, NavLink,withRouter} from "react-router-dom";
-import {Segment, Header , Icon , Menu } from 'semantic-ui-react'
+import {Link, NavLink} from "react-router-dom";
+import {Segment, Header , Icon } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {loggedOut} from '../redux/actionCreators'
 import swal from 'sweetalert'

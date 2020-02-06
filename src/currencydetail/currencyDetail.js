@@ -39,7 +39,7 @@ class CurrencyDetail extends Component {
             props.currency.percentage_change_7d] 
           }
         ]
-      }
+      } 
 
   } 
 
@@ -92,7 +92,7 @@ class CurrencyDetail extends Component {
       <Modal trigger={<Button>You Tube Video </Button>}>
       <Modal.Header>{this.props.currency.name}  Explained</Modal.Header>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/Pl8OlkkwRpc" frameborder="0" 
-      allow="accelerometer;  autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+      allow="accelerometer;  autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen></iframe> 
       </Modal> 
       </Link>  
 

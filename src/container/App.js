@@ -9,31 +9,15 @@ import {connect} from 'react-redux'
 import {fetchingCurrencies} from '../redux/actionCreators'
 import currencyDetail from '../currencydetail/currencyDetail'
 import LoginForm from '../Login/LoginForm' 
-import swal from 'sweetalert'
+
 
 
 class App extends Component {
   
-  // constructor(){
-  //   super()
-  //   this.state ={currentUser :null }
-  // } 
-
-
   componentDidMount(){
     this.props.fetchingCurrencies()
   }
 
-  // logout = () => {
-  //   this.setState({currentUser: null}) 
-  //   swal("Good Bye!", "Sucessfully signed out!!", "success")
-  // }
-
-  // updateUser = (user) => {
-  //   this.setState({currentUser: user})
-  // } 
-
-  
 
   render() {
     return (
