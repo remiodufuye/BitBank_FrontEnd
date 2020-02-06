@@ -7,6 +7,12 @@ import NumberFormat from 'react-number-format'
 import {addingToWatchList} from '../redux/actionCreators' 
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import drilldown from 'highcharts/modules/drilldown' 
+
+
+
+
+drilldown(Highcharts)
 
 
 class CurrencyDetail extends Component {
