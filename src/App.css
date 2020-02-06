@@ -1,12 +1,14 @@
 
 
 /* body::after {
-  background: url('./images/BitBANK.png');
+  background: url('./images/crypyo.jpg');
+   background: url('./images/cryptocurrency.jpg');
+   bitcoin-matrix.jpg
 }  */
 
- /* body::after {
+  body::after {
   content: "";
-  background: url('./images/bitcoin.jpeg');
+  background: url('./images/bitcoin-matrix.jpg');
   opacity: 0.5;
   top: 0;
   left: 0;
@@ -17,7 +19,7 @@
   background-attachment: fixed;  
   background-position: center;   
   background-size: cover; 
-} */
+} 
 
 .App {
   text-align: center;
