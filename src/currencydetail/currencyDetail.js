@@ -8,6 +8,7 @@ import {addingToWatchList} from '../redux/actionCreators'
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import drilldown from 'highcharts/modules/drilldown' 
+import NoDataAvailable from './NoDataAvailable'
 
 
 
@@ -17,7 +18,7 @@ drilldown(Highcharts)
 
 class CurrencyDetail extends Component {
 
-  constructor() {
+  constructor(props) {
     super() 
     this.state = {
       showmodal: false 
@@ -32,7 +33,10 @@ class CurrencyDetail extends Component {
       },
       series: [
         {
-          data: [1, 2, 1, 4, 3, 6]
+          name: 'Percentage Change This Week',
+          data: [props.currency.percentage_change_1h , 
+          props.currency.percentage_change_24h ,
+           props.currency.percentage_change_7d] 
         }
       ]
     };
@@ -72,7 +76,11 @@ class CurrencyDetail extends Component {
       </Card> 
 
       {/* high chart  */}
-      <HighchartsReact highcharts={Highcharts} options={this.options} />
+      {(this.props.currency.percentage_change_1h && 
+      this.props.currency.percentage_change_24h && 
+      this.props.currency.percentage_change_7d !== null ) ? 
+      <HighchartsReact highcharts={Highcharts} options={this.options} /> : < NoDataAvailable  currency ={this.props.currency.name}/>
+      } 
 
 
       {/* You Tube Embed  */} 
