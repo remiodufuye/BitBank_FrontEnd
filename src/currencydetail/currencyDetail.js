@@ -13,6 +13,8 @@ import NoDataAvailable from './NoDataAvailable'
 
 drilldown(Highcharts)
 
+const watchitems = 'http://localhost:3000/watchitems'
+
 class CurrencyDetail extends Component {
 
   constructor(props) {
@@ -40,9 +42,14 @@ class CurrencyDetail extends Component {
 
   }  
 
+
+
+
   render() {
-    // console.log("CurrencyDetail props", this.props) 
-    return !this.props.currency ? null : (
+
+    
+    // return !this.props.currency ? null : (
+      return (
     <Container>
       {/* <Card > */}
       <Segment>

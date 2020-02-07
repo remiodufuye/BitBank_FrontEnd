@@ -40,7 +40,7 @@ const watchItemReducer = (oldState=[], action) => {
             return action.payload
             default:
             return oldState
-    }
+    } 
 }
 
 const searchTextReducer = (oldState="", action) => {
