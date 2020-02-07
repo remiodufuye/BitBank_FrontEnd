@@ -26,12 +26,16 @@ class Navbar extends Component{
             </div>
             </NavLink> 
             } 
+            { this.props.currentUser ? 
             <NavLink to="/portfolio" activeClassName="active item" className="item">
             <Header as='h4' floated='right'><Icon name="suitcase"/>Portfolio</Header>
-            </NavLink>
+            </NavLink> : null 
+            }
+            { this.props.currentUser ? 
             <NavLink to="/watchlist" activeClassName="active item" className="item">
             <Header as='h4' floated='right'><Icon name="bell outline"/>WatchList</Header>
-            </NavLink>
+            </NavLink> : null 
+            }
             </Segment>
             </Sticky>
         ) 
