@@ -42,16 +42,28 @@ class CurrencyDetail extends Component {
 
   }  
 
+   createWatchList = (currency) => {
+      let currencyID = currency.coin_id 
+      let configOptions = {
+        method: "POST", 
+        headers: {
+          "Accept":"application/json" ,
+          "Content-Type":"application/json"
+        } ,
+        body: JSON.stringify({
+          user_id: this.props.user.id ,
+          currency_id: currencyID
+        }) 
+
+   }
 
 
 
   render() {
 
-    
-    // return !this.props.currency ? null : (
       return (
     <Container>
-      {/* <Card > */}
+      {/* Currency Card */}
       <Segment>
       <Card.Content >
         <Image floated='right' size='mini'src={this.props.currency.logo}/>
@@ -71,7 +83,7 @@ class CurrencyDetail extends Component {
          </Card.Meta>
       </Card.Content> 
       </Segment>
-      {/* </Card>   */}
+     
    
       <br />  
       {/* high chart  */}
