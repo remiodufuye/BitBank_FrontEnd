@@ -45,7 +45,6 @@ class CurrencyDetail extends Component {
   }  
 
       createWatchItem = (coinID , userID) => {
-        // debugger
         if ( !this.props.watchitems.map(item => item.currency.coin_id).includes(coinID)) {
           let configOptions = {
             method: "POST", 
