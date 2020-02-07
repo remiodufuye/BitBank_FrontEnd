@@ -44,7 +44,7 @@ class CurrencyDetail extends Component {
 
   }  
 
-      createWatchItem = (currencyID , userID) => {
+      createWatchItem = (coinID , userID) => {
           let configOptions = {
             method: "POST", 
             headers: {
@@ -53,21 +53,22 @@ class CurrencyDetail extends Component {
             } ,
             body: JSON.stringify({
               user_id: userID , 
-              currency_id: currencyID
+              currency_id: coinID
             })  
       }
 
        fetch(watchitems_url,configOptions)
        .then(response => response.json())
        .then( data => {
-            //   if (data.message === "Coin added to watchlist!") {
-            //     let newObj = JSON.parse(data.watchitem)
-            //     this.props.addedWatchItem(newObj)
-            //     swal("Done!", data.message, "success")
-            // } else {
-            //     swal("Error!", data.message, 'error')
-            // }  
-            console.log(data)
+        //  debugger 
+              if (data.message === "Coin added to watchlist!") {
+                let newObj = JSON.parse(data.watchitem)
+                this.props.addedWatchItem(newObj)
+                swal("Done!", data.message, "success")
+            } else {
+                swal("Error!", data.message, 'error') 
+            }  
+            // console.log(data) 
             }
             )
             .catch(error => console.log(error.message))
