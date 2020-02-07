@@ -4,11 +4,12 @@ import {withRouter , Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Segment , Button , Header , Container  , Card , Image , Modal } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
-import {addingToWatchItems} from '../redux/actionCreators' 
+import {addedWatchItem , deleteWatchItem } from '../redux/actionCreators' 
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import drilldown from 'highcharts/modules/drilldown' 
 import NoDataAvailable from './NoDataAvailable'
+import swal from 'sweetalert'
 
 
 drilldown(Highcharts)
@@ -42,22 +43,34 @@ class CurrencyDetail extends Component {
 
   }  
 
-   createWatchList = (currency) => {
-      let currencyID = currency.coin_id 
-      let configOptions = {
-        method: "POST", 
-        headers: {
-          "Accept":"application/json" ,
-          "Content-Type":"application/json"
-        } ,
-        body: JSON.stringify({
-          user_id: this.props.user.id ,
-          currency_id: currencyID
-        }) 
+      createWatchList = (currency) => {
+          let currencyID = currency.coin_id 
 
-   }
+          let configOptions = {
+            method: "POST", 
+            headers: {
+              "Accept":"application/json" ,
+              "Content-Type":"application/json"
+            } ,
+            body: JSON.stringify({
+              user_id: this.props.user.id ,
+              currency_id: currencyID
+            }) 
+      }
 
+       fetch(watchitems,configOptions)
+       .then(response => response.json())
+       .then( data => {
+              if (data.message === "Coin added to your WatchList!") {
+                let newObj = JSON.parse(data.watchitem)
+                this.props.addedWatchItem(newObj)
+                swal("Done!", data.message, "success")
+            } else {
+                swal("Error!", data.message, 'error')
+            }
+            }).catch(error => console.log(error.message))
 
+      }
 
   render() {
 
@@ -134,7 +147,7 @@ class CurrencyDetail extends Component {
        color ="blue" 
        icon='eye' 
        labelPosition='right' 
-        onClick={this.props.addingToWatchItems(this.props.currency.coin_id)}
+       onClick={this.createWatchList(this.props.currency.coin_id)}
        />
        </Segment> 
 
@@ -144,16 +157,20 @@ class CurrencyDetail extends Component {
   }
 } 
 
-
 const mapStateToProps = (store, ownProps) => ({
   currency: store.currencies.find(
      currency => {return currency.coin_id === parseInt(ownProps.match.params.currencyId)}
-   ) ,  user: store.currentUser
+      ) , 
+      user: store.currentUser ,
+      watchitems: store.watchitems
  })
 
- const mapDispatchToProps = (dispatch) => ({
-  addingToWatchItems: (currencyId) => {dispatch(addingToWatchItems(currencyId))}
- })
+    const mapDispatchToProps = dispatch => {
+      return {
+        addedWatchItem: (watchitem) => {dispatch(addedWatchItem(watchitem))}  ,
+        deleteWatchItem: (watchitem) => {dispatch(deleteWatchItem(watchitem))}
+      }
+    } 
 
 
  export default withRouter(connect(mapStateToProps,mapDispatchToProps)(CurrencyDetail));

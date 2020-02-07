@@ -77,5 +77,4 @@ function fetchingCurrencies(){
     } 
 }
 
-export {fetchingCurrencies,addingToPortfolio, onSearch , fetchedUser , 
-    loggedOut ,fetchingWatchItems , deleteWatchItem , addedWatchItem }  
+export {fetchingCurrencies,addingToPortfolio, onSearch , fetchedUser , loggedOut , fetchingWatchItems , deleteWatchItem , addedWatchItem }  

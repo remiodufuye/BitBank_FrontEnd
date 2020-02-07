@@ -6,7 +6,7 @@ import AllCurrenciesContainer from './AllCurrenciesContainer'
 import PortfolioContainer from '../container/PortfolioContainer'
 import WatchListContainer from '../container/WatchListContainer'
 import {connect} from 'react-redux'
-import {fetchingCurrencies} from '../redux/actionCreators'
+import {fetchingCurrencies ,fetchingWatchItems} from '../redux/actionCreators'
 import currencyDetail from '../currencydetail/currencyDetail'
 import LoginForm from '../Login/LoginForm' 
 
@@ -15,6 +15,7 @@ class App extends Component {
   
   componentDidMount(){
     this.props.fetchingCurrencies()
+    this.props.fetchingWatchItems()
   }
 
   render() {
@@ -41,6 +42,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchingCurrencies: () => {dispatch(fetchingCurrencies())} ,
+  fetchingWatchItems: () => {dispatch(fetchingWatchItems())} 
 })
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps) (App)) ; 

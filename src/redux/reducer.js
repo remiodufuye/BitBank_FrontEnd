@@ -1,7 +1,7 @@
 
 import {combineReducers} from 'redux'
 import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADD_TO_PORTFOLIO , 
-    ADD_TO_WATCHITEMS , CHANGING_SEARCH_TEXT , LOGGED_IN , LOGGED_OUT} from './actionType'
+    FETCHED_WATCHITEM , ADDED_WATCHITEM , DELETE_WATCHITEM , CHANGING_SEARCH_TEXT , LOGGED_IN , LOGGED_OUT} from './actionType'
 
 const loadingReducer = (oldState=false, action) => {
     switch(action.type) {
@@ -36,12 +36,19 @@ const portfolioReducer = (oldState=[], action) => {
 
 const watchItemReducer = (oldState=[], action) => {
     switch(action.type) {
-        case ADD_TO_WATCHITEMS: 
+        case FETCHED_WATCHITEM: 
             return action.payload
-            default:
+        case ADDED_WATCHITEM:
+            return [...oldState, action.payload]
+        case DELETE_WATCHITEM:
+            const removedItem = oldState.findIndex(watchitem => watchitem.id === action.payload.id)
+            return [...oldState.slice(0, removedItem), ...oldState.slice(removedItem + 1)]
+        default:
             return oldState
     } 
 }
+
+
 
 const searchTextReducer = (oldState="", action) => {
     switch(action.type){
