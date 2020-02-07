@@ -74,7 +74,7 @@ const searchTextReducer = (oldState="", action) => {
 const rootreducer = combineReducers({
     loading: loadingReducer ,
     currencies: currenciesReducer ,
-    portfolio:portfolioReducer ,
+    portfolio: portfolioReducer ,
     watchitems: watchItemReducer,
     searchText: searchTextReducer,
     currentUser: userReducer

@@ -12,9 +12,10 @@ import NoDataAvailable from './NoDataAvailable'
 import swal from 'sweetalert'
 
 
+
 drilldown(Highcharts)
 
-const watchitems = 'http://localhost:3000/watchitems'
+const watchitems_url = 'http://localhost:3000/watchitems'
 
 class CurrencyDetail extends Component {
 
@@ -43,9 +44,7 @@ class CurrencyDetail extends Component {
 
   }  
 
-      createWatchList = (currency) => {
-          let currencyID = currency.coin_id 
-
+      createWatchItem = (currencyID , userID) => {
           let configOptions = {
             method: "POST", 
             headers: {
@@ -53,22 +52,25 @@ class CurrencyDetail extends Component {
               "Content-Type":"application/json"
             } ,
             body: JSON.stringify({
-              user_id: this.props.user.id ,
+              user_id: userID , 
               currency_id: currencyID
-            }) 
+            })  
       }
 
-       fetch(watchitems,configOptions)
+       fetch(watchitems_url,configOptions)
        .then(response => response.json())
        .then( data => {
-              if (data.message === "Coin added to your WatchList!") {
-                let newObj = JSON.parse(data.watchitem)
-                this.props.addedWatchItem(newObj)
-                swal("Done!", data.message, "success")
-            } else {
-                swal("Error!", data.message, 'error')
+            //   if (data.message === "Coin added to watchlist!") {
+            //     let newObj = JSON.parse(data.watchitem)
+            //     this.props.addedWatchItem(newObj)
+            //     swal("Done!", data.message, "success")
+            // } else {
+            //     swal("Error!", data.message, 'error')
+            // }  
+            console.log(data)
             }
-            }).catch(error => console.log(error.message))
+            )
+            .catch(error => console.log(error.message))
 
       }
 
@@ -147,7 +149,7 @@ class CurrencyDetail extends Component {
        color ="blue" 
        icon='eye' 
        labelPosition='right' 
-       onClick={this.createWatchList(this.props.currency.coin_id)}
+       onClick={ () => this.createWatchItem(this.props.currency.coin_id , this.props.user.id)}
        />
        </Segment> 
 
@@ -162,7 +164,7 @@ const mapStateToProps = (store, ownProps) => ({
      currency => {return currency.coin_id === parseInt(ownProps.match.params.currencyId)}
       ) , 
       user: store.currentUser ,
-      watchitems: store.watchitems
+      watchitems: store.watchitems 
  })
 
     const mapDispatchToProps = dispatch => {
