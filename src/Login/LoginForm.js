@@ -1,5 +1,5 @@
 import React , {Component} from 'react'
-import {Button , Form , Segment , Message} from 'semantic-ui-react' 
+import {Button , Form , Divider , Message , Grid , Icon} from 'semantic-ui-react' 
 import {connect } from 'react-redux' 
 import {fetchedUser} from '../redux/actionCreators'
 import swal from 'sweetalert'
@@ -38,11 +38,16 @@ class LoginForm extends Component {
 
             render() { 
                 return (
-                    <Segment>
+                      <React.Fragment>
+                        <Divider hidden />
+                        <Divider hidden /> 
+                        <Divider hidden />
+                        <Divider hidden />
+                        <Grid centered columns ={1}>
                         <Form
                             onSubmit={this.handleLoginSubmit}
-                            size='mini'
-                            key='mini'
+                            // size='mini'
+                            // key='mini'
                             loading={this.props.authenticatingUser}
                             error={this.props.failedLogin}
                         >
@@ -50,7 +55,8 @@ class LoginForm extends Component {
                             error
                             header={this.props.failedLogin ? this.props.error : null}
                             /> 
-
+                            <Icon name= 'users' size = "huge" /> 
+                            {/* old icon : users  */}
                             <Form.Input 
                                 label='username'
                                 placeholder='username'
@@ -73,7 +79,11 @@ class LoginForm extends Component {
 
 
                         </Form>
-                    </Segment>
+
+
+                        </Grid>
+                        </React.Fragment> 
+                
                 )
             }
 

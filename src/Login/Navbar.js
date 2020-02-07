@@ -1,7 +1,7 @@
 
 import React , {Component} from 'react'; 
-import {Link, NavLink} from "react-router-dom";
-import {Segment, Header , Icon } from 'semantic-ui-react'
+import {Link, NavLink } from "react-router-dom";
+import {Segment, Header , Icon , Sticky } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {loggedOut} from '../redux/actionCreators'
 import swal from 'sweetalert'
@@ -10,6 +10,7 @@ import swal from 'sweetalert'
 class Navbar extends Component{
     render() {
         return (
+            <Sticky>
             <Segment clearing>
             <Link to="/" class ="item">
             <Header as='h2' floated='left' ><Icon name="dollar sign"/>BitBANK</Header>
@@ -19,11 +20,11 @@ class Navbar extends Component{
             <Header as='h4' floated='right'><Icon name="user secret"/> Login </Header>
             </NavLink>
             : 
-            <Link>
+            <NavLink to="/login">
             <div onClick={this.props.loggedOut} >
             <Header as='h4' floated='right'><Icon name="sign-out" /> Logout</Header> 
             </div>
-            </Link> 
+            </NavLink> 
             } 
             <NavLink to="/portfolio" activeClassName="active item" className="item">
             <Header as='h4' floated='right'><Icon name="suitcase"/>Portfolio</Header>
@@ -32,6 +33,7 @@ class Navbar extends Component{
             <Header as='h4' floated='right'><Icon name="bell outline"/>WatchList</Header>
             </NavLink>
             </Segment>
+            </Sticky>
         ) 
     }
 }   
