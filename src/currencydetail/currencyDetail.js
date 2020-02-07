@@ -45,6 +45,8 @@ class CurrencyDetail extends Component {
   }  
 
       createWatchItem = (coinID , userID) => {
+        // debugger
+        if ( !this.props.watchitems.map(item => item.currency.coin_id).includes(coinID)) {
           let configOptions = {
             method: "POST", 
             headers: {
@@ -68,11 +70,13 @@ class CurrencyDetail extends Component {
             } else {
                 swal("Error!", data.message, 'error') 
             }  
-            // console.log(data) 
             }
             )
             .catch(error => console.log(error.message))
-
+        }
+         else {
+           swal("Error!", "Already added to watchlist!!", 'error') 
+         }
       }
 
   render() {
@@ -144,9 +148,9 @@ class CurrencyDetail extends Component {
        labelPosition='left' 
 
        /> 
-
+     
        <Button 
-       content='Watch' 
+       content={this.props.watchitems.map(item => item.currency.coin_id).includes(this.props.currency.coin_id) ? 'Already In WatchList' :'Watch'} 
        color ="blue" 
        icon='eye' 
        labelPosition='right' 
