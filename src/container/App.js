@@ -2,12 +2,14 @@ import React , {Component} from 'react';
 import { Route , Switch , withRouter , Redirect} from "react-router-dom"
 import '../App.css';
 import Navbar from '../Login/Navbar' 
-import AllCurrenciesContainer from './AllCurrenciesContainer'
+// import AllCurrenciesContainer from './AllCurrenciesContainer'
 import PortfolioContainer from '../container/PortfolioContainer'
 import WatchListContainer from '../container/WatchListContainer'
 import {connect} from 'react-redux'
 import {fetchingCurrencies ,fetchingWatchItems} from '../redux/actionCreators'
 import currencyDetail from '../currencydetail/currencyDetail'
+import WatchList from '../components/WatchList'
+import CurrencyList from '../components/CurrencyList'
 import LoginForm from '../Login/LoginForm' 
 
 
@@ -15,7 +17,7 @@ class App extends Component {
   
   componentDidMount(){
     this.props.fetchingCurrencies()
-    this.props.fetchingWatchItems()
+    this.props.fetchingWatchItems() 
   }
 
   render() {
@@ -25,9 +27,10 @@ class App extends Component {
         <Switch>
            <Route exact path ="/login" render={() => this.props.user ? <Redirect to='/' />: <LoginForm/>} />
            <Route path ="/portfolio" component={PortfolioContainer}  />
-           <Route path ="/watchlist" component={WatchListContainer}  />
+           <Route path ="/watchlist" component={WatchList}  />
            <Route path="/currencies/:currencyId" component={currencyDetail} />
-           <Route path ="/" component={AllCurrenciesContainer}  />
+           <Route path ="/" component={CurrencyList}  />
+           {/* <Route path ="/" component={AllCurrenciesContainer}  /> */}
        </Switch>
       </div>
     );
