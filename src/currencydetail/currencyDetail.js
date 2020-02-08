@@ -126,12 +126,13 @@ class CurrencyDetail extends Component {
       <Link>
       <Modal trigger={<Button>You Tube Video </Button>}>
       <Modal.Header>{this.props.currency.name}  Explained</Modal.Header>
-      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Pl8OlkkwRpc" frameborder="0" 
+      <iframe width="100%" height="100%" src={this.props.currency.youtube_url} frameborder="0" 
       allow="accelerometer;  autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen></iframe> 
       </Modal> 
       </Link>  
+      {/* src="https://www.youtube.com/embed/Pl8OlkkwRpc" */} 
 
-      {/* coin market cap explorer  */}
+      {/* coin market cap explorer  */} 
 
       <Link>
       <Button onClick={this.props.currency.coin_market_cap_explorer}> Coin Explorer </Button>
