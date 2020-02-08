@@ -3,7 +3,8 @@ import React from 'react'
 import CurrencyListItem from './CurrencyListItem'
 import {connect} from 'react-redux'
 import {Grid, Card , Segment} from 'semantic-ui-react'
-import SubHeader from './SubHeader'
+// import SubHeader from './SubHeader'
+import SubHeaderAll from './SubHeaderAll'
 import Searchbar from '../components/SearchBar'
 
 
@@ -11,7 +12,7 @@ const CurrencyList = props => props.loading ? <p>Loading Currencies...</p> : (
 
         <div className ="ui container">
             <div>
-               <SubHeader /> 
+               <SubHeaderAll /> 
                <br />
                <br /> 
                 <Searchbar /> 
