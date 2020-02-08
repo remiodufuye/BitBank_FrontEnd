@@ -3,7 +3,6 @@ import React from 'react'
 import CurrencyListItem from './CurrencyListItem'
 import {connect} from 'react-redux'
 import {Grid, Card , Segment} from 'semantic-ui-react'
-// import SubHeader from './SubHeader'
 import SubHeaderAll from './SubHeaderAll'
 import Searchbar from '../components/SearchBar'
 

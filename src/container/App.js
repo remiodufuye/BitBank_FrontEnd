@@ -2,9 +2,7 @@ import React , {Component} from 'react';
 import { Route , Switch , withRouter , Redirect} from "react-router-dom"
 import '../App.css';
 import Navbar from '../Login/Navbar' 
-// import AllCurrenciesContainer from './AllCurrenciesContainer'
 import PortfolioContainer from '../container/PortfolioContainer'
-import WatchListContainer from '../container/WatchListContainer'
 import {connect} from 'react-redux'
 import {fetchingCurrencies ,fetchingWatchItems} from '../redux/actionCreators'
 import currencyDetail from '../currencydetail/currencyDetail'
@@ -30,7 +28,6 @@ class App extends Component {
            <Route path ="/watchlist" component={WatchList}  />
            <Route path="/currencies/:currencyId" component={currencyDetail} />
            <Route path ="/" component={CurrencyList}  />
-           {/* <Route path ="/" component={AllCurrenciesContainer}  /> */}
        </Switch>
       </div>
     );
