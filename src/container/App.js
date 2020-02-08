@@ -23,16 +23,18 @@ class App extends Component {
       <div className="App">
         <Navbar/>
         <Switch>
+           <Route exact path ='/' render={() => this.props.user ? <CurrencyList /> : <Redirect to = '/login' /> } />
            <Route exact path ="/login" render={() => this.props.user ? <Redirect to='/' />: <LoginForm/>} />
            <Route path ="/portfolio" component={PortfolioContainer}  />
+           {/* <Route exact path ="/watchlist" render={() => this.props.user ? <Redirect to='/watchlist' />: <LoginForm/>} /> */}
            <Route path ="/watchlist" component={WatchList}  />
            <Route path="/currencies/:currencyId" component={currencyDetail} />
-           <Route path ="/" component={CurrencyList}  />
        </Switch>
       </div>
     );
   }
 } 
+
 
 const mapStateToProps = state => {
   return {

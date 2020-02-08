@@ -41,10 +41,10 @@ const watchItemReducer = (oldState=[], action) => {
         case ADDED_WATCHITEM:
             return [...oldState, action.payload]
         case DELETE_WATCHITEM:
-            const removedItem = oldState.findIndex(watchitem => watchitem.id === action.payload.id)
-            return [...oldState.slice(0, removedItem), ...oldState.slice(removedItem + 1)]
+            let newWatchItem = oldState.filter(watchitem => watchitem.id !== action.payload.id)
+            return newWatchItem
         default:
-            return oldState
+            return oldState 
     } 
 }
 

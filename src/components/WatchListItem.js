@@ -1,11 +1,24 @@
 
 import React  , {Component} from 'react'
 import { Card , Image , Button } from 'semantic-ui-react'
-import {Link } from "react-router-dom";
+import {Link , withRouter } from "react-router-dom";
+import {deleteWatchItem} from '../redux/actionCreators'
+import {connect} from 'react-redux'
 
 
-// const WatchListItem = props =>  (
-    class WatchListItem extends Component {
+
+class WatchListItem extends Component {
+    
+    
+    removeWatchItem = (watchitem) => {
+        fetch(`http://localhost:3000/watchitems/${watchitem}` , {
+            method: "DELETE"
+        })
+        .then(response => response.json())
+        .then(watchitem => this.props.deleteWatchItem(watchitem))
+    }
+
+
         render() {
             return (
             <Card>
@@ -26,7 +39,14 @@ import {Link } from "react-router-dom";
                 Show Details
                 </Button> 
                 </Link> 
-                <Button basic color='red'>
+                <Button basic color='red'
+                onClick={ 
+                    
+                    () => { console.log(`this is the id ${this.props.watchitem.id}`)
+                        this.removeWatchItem(this.props.watchitem.id)
+                    }
+                }
+                >
                 Remove 
                 </Button>
                 </div>
@@ -36,13 +56,37 @@ import {Link } from "react-router-dom";
 
         }
     }
+
+        const mapStateToProps = (store, ownProps) => ({
+                user: store.currentUser ,
+                watchitems: store.watchitems 
+        }) 
+      
+          const mapDispatchToProps = dispatch => {
+            return {
+              deleteWatchItem: (watchitem) => {dispatch(deleteWatchItem(watchitem))}
+            }
+          } 
+      
+
+
+
+    export default withRouter(connect(mapStateToProps,mapDispatchToProps)(WatchListItem));
   
-    export default WatchListItem 
  
-//    const mapStateToProps = (store, ownProps) => ({
-//     currency: store.currencies.find(
-//        currency => {return currency.coin_id === parseInt(ownProps.match.params.currencyId)}
-//         ) 
-//    })
+
+    // <Modal.Header>
+    // <p>{player.first_name} {player.last_name}
+    // {this.props.user && this.props.favorites.map(favorite => favorite.player_id).includes(player.id) ? 
+    // <Button size='mini' onClick={
+    //     () => this.removeFavorite(this.props.favorites.find(favorite => favorite.user_id === this.props.user.id
+    //      && 
+    // favorite.player_id === player.id ))}>Remove From Favorites</Button>: null}
+
+    // {this.props.user && !this.props.user.favorites.map(favorite => favorite.player_id).includes(player.id) ? 
+    // <Button size='mini' onClick={() => this.createFavorite(player)}>Add To Favorites</Button> : null}
+    //  </p>
+    // </Modal.Header>
+ 
 
   
