@@ -4,6 +4,7 @@ import { Card , Image , Button } from 'semantic-ui-react'
 import {Link , withRouter } from "react-router-dom";
 import {deleteWatchItem} from '../redux/actionCreators'
 import {connect} from 'react-redux'
+import swal from 'sweetalert'
 
 
 
@@ -40,12 +41,11 @@ class WatchListItem extends Component {
                 </Button> 
                 </Link> 
                 <Button basic color='red'
-                onClick={ 
-                    
-                    () => { console.log(`this is the id ${this.props.watchitem.id}`)
-                        this.removeWatchItem(this.props.watchitem.id)
+
+                onClick={() => {
+                    swal("Done!", "Deleted From WatchList!", "success")
+                   this.removeWatchItem(this.props.watchitem.id)}
                     }
-                }
                 >
                 Remove 
                 </Button>
