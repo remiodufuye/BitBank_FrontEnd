@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Grid, Card , Segment} from 'semantic-ui-react'
 import SubHeaderWatch from './SubHeaderWatch'
 import Searchbar from '../components/SearchBar'
+import NoWatchItem from '../components/NoWatchItem'
 
 
 const WatchList = props => props.loading ? <p>Loading Currencies...</p> : (
@@ -21,7 +22,7 @@ const WatchList = props => props.loading ? <p>Loading Currencies...</p> : (
                 <Grid columns="three" divided>
                 <Segment style={{overflow: 'auto', maxHeight: 350 }} >
                 <Card.Group itemsPerRow={5}>
- 
+               
                 { props.watchitems.filter(watchitem => watchitem.currency.name.toLowerCase().includes(props.searchText.toLowerCase()))
                 .map(watchitem => (
                     < WatchListItem

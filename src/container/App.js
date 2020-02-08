@@ -9,6 +9,7 @@ import currencyDetail from '../currencydetail/currencyDetail'
 import WatchList from '../components/WatchList'
 import CurrencyList from '../components/CurrencyList'
 import LoginForm from '../Login/LoginForm' 
+ 
 
 
 class App extends Component {
@@ -26,7 +27,6 @@ class App extends Component {
            <Route exact path ='/' render={() => this.props.user ? <CurrencyList /> : <Redirect to = '/login' /> } />
            <Route exact path ="/login" render={() => this.props.user ? <Redirect to='/' />: <LoginForm/>} />
            <Route path ="/portfolio" component={PortfolioContainer}  />
-           {/* <Route exact path ="/watchlist" render={() => this.props.user ? <Redirect to='/watchlist' />: <LoginForm/>} /> */}
            <Route path ="/watchlist" component={WatchList}  />
            <Route path="/currencies/:currencyId" component={currencyDetail} />
        </Switch>
@@ -38,7 +38,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.currentUser
+    user: state.currentUser,
+    watchitems : state.watchitems
   }
 }
 

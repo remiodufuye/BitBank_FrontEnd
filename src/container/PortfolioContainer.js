@@ -5,7 +5,7 @@ import CurrencyList from '../components/CurrencyList'
 const PortfolioContainer = () => {
    return(
        <div> 
-           <CurrencyList /> 
+           <h1>This is the PortfolioContainer </h1>
         </div>
    )
 } 
