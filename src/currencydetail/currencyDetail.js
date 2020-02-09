@@ -130,12 +130,15 @@ class CurrencyDetail extends Component {
       allow="accelerometer;  autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen></iframe> 
       </Modal> 
       </Link>  
-      {/* src="https://www.youtube.com/embed/Pl8OlkkwRpc" */} 
+    
 
       {/* coin market cap explorer  */} 
 
       <Link>
-      <Button onClick={this.props.currency.coin_market_cap_explorer}> Coin Explorer </Button>
+      {/* <Button onClick={this.props.currency.coin_market_cap_explorer}> Coin Explorer </Button> */}
+      <Button
+      onclick={"window.location.href = 'https://w3docs.com';"}
+      > Coin Explorer</Button>
       </Link>
 
       
