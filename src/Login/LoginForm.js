@@ -3,6 +3,7 @@ import {Button , Form , Divider , Message , Grid , Icon} from 'semantic-ui-react
 import {connect } from 'react-redux' 
 import {fetchedUser} from '../redux/actionCreators'
 import swal from 'sweetalert'
+import { Link} from 'react-router-dom'
 
 class LoginForm extends Component {
     
@@ -75,7 +76,22 @@ class LoginForm extends Component {
                             />
                          
 
-                          <Button type='submit'>Login</Button>
+                          {/* <Button type='submit'>Login</Button> */}
+
+                          { this.state.username && this.state.password
+                              ? <Button
+                                type='submit'
+                                >Login</Button>
+                              : <Button
+                                disabled
+                                type='submit'
+                              >Login</Button>
+                            }
+
+                            <Divider />
+                            <Link to='/signup'>
+                              <Button type='button'>Create a new account</Button>
+                            </Link>
 
 
                         </Form>
@@ -98,8 +114,9 @@ const mapDispatchToProps = dispatch => {
     }
   }
   
+const mapStateToProps = store => ({currentUser: store.currentUser})
 
-export default connect(null,mapDispatchToProps)(LoginForm)
+export default connect(mapStateToProps,mapDispatchToProps)(LoginForm)
 
 
 
