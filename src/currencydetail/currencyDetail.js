@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import {withRouter , Link } from 'react-router-dom' 
 import {connect} from 'react-redux'
-import {Segment , Button , Header , Container  , Card , Image , Modal } from 'semantic-ui-react'
+import {Segment , Button , Header , Container  , Card , Image , Modal , List } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
 import {addedWatchItem , deleteWatchItem } from '../redux/actionCreators' 
 import Highcharts from 'highcharts';
@@ -133,15 +133,20 @@ class CurrencyDetail extends Component {
     
 
       {/* coin market cap explorer  */} 
-
-      <Link>
+      {/* <Link> */}
       {/* <Button onClick={this.props.currency.coin_market_cap_explorer}> Coin Explorer </Button> */}
-      <Button
-      onclick={"window.location.href = 'https://w3docs.com';"}
-      > Coin Explorer</Button>
-      </Link>
-
-      
+      {/* <Button onClick={()=> window.open("www.google.com", "_blank")} */}
+      {/* <Button> Coin Explorer</Button> */}
+      {/* </Link> */}
+     
+               <List link>
+                  <List.Item as='a' href='www.google.com'  target="_blank">
+                  <Button>
+                  Coin Explorer
+                  </Button >
+                  </List.Item>
+                </List>  
+  
       {/* Button  */}
       <Segment>
        <Button 
