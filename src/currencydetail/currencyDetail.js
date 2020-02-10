@@ -123,6 +123,7 @@ class CurrencyDetail extends Component {
 
 
       {/* You Tube Embed  */} 
+      <Segment>
       <Link>
       <Modal trigger={<Button>You Tube Video </Button>}>
       <Modal.Header>{this.props.currency.name}  Explained</Modal.Header>
@@ -133,19 +134,16 @@ class CurrencyDetail extends Component {
     
 
       {/* coin market cap explorer  */} 
-      {/* <Link> */}
-      {/* <Button onClick={this.props.currency.coin_market_cap_explorer}> Coin Explorer </Button> */}
-      {/* <Button onClick={()=> window.open("www.google.com", "_blank")} */}
-      {/* <Button> Coin Explorer</Button> */}
-      {/* </Link> */}
      
-               <List link>
-                  <List.Item as='a' href='www.google.com'  target="_blank">
-                  <Button>
-                  Coin Explorer
-                  </Button >
-                  </List.Item>
-                </List>  
+     <List link>
+      <List.Item as='a' 
+        href = {this.props.currency.coin_market_cap_explorer}
+        target="_blank">
+        <Button>coin explorer</Button>
+        </List.Item>
+        </List>  
+
+      </Segment> 
   
       {/* Button  */}
       <Segment>
