@@ -139,7 +139,7 @@ class CurrencyDetail extends Component {
       <List.Item as='a' 
         href = {this.props.currency.coin_market_cap_explorer}
         target="_blank">
-        <Button>coin explorer</Button>
+        <Button>Coin Explorer</Button>
         </List.Item>
         </List>  
 

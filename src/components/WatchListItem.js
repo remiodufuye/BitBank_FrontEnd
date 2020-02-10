@@ -75,18 +75,5 @@ class WatchListItem extends Component {
   
  
 
-    // <Modal.Header>
-    // <p>{player.first_name} {player.last_name}
-    // {this.props.user && this.props.favorites.map(favorite => favorite.player_id).includes(player.id) ? 
-    // <Button size='mini' onClick={
-    //     () => this.removeFavorite(this.props.favorites.find(favorite => favorite.user_id === this.props.user.id
-    //      && 
-    // favorite.player_id === player.id ))}>Remove From Favorites</Button>: null}
-
-    // {this.props.user && !this.props.user.favorites.map(favorite => favorite.player_id).includes(player.id) ? 
-    // <Button size='mini' onClick={() => this.createFavorite(player)}>Add To Favorites</Button> : null}
-    //  </p>
-    // </Modal.Header>
- 
 
   
