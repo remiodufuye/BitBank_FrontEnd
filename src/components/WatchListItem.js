@@ -70,7 +70,6 @@ class WatchListItem extends Component {
       
 
 
-
     export default withRouter(connect(mapStateToProps,mapDispatchToProps)(WatchListItem));
   
  

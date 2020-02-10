@@ -1,9 +1,10 @@
 
 import {LOADING_CURRENCIES , FETCHED_CURRENCIES  , ADDED_WATCHITEM , LOADING_WATCHITEM , FETCHED_WATCHITEM , DELETE_WATCHITEM
-     , ADD_TO_PORTFOLIO ,CHANGING_SEARCH_TEXT , LOGGED_IN ,LOGGED_OUT } from './actionType'
+     , ADD_TO_PORTFOLIO ,CHANGING_SEARCH_TEXT , LOGGED_IN ,LOGGED_OUT , CREATE_NEW_USER} from './actionType'
 
 const currencies_url = 'http://localhost:3000/currencies'
 const watchitems_url = 'http://localhost:3000/watchitems' 
+const user_url = 'http://localhost:3000/users'
 
 function onSearch(searchText){
     return {type: CHANGING_SEARCH_TEXT, payload: searchText}
@@ -17,12 +18,37 @@ function loggedOut() {
     return {type: LOGGED_OUT, payload: null}
 }
 
+function createdUser(user) {
+    return{type: CREATE_NEW_USER, payload:user}
+  }
+
+  function createNewUser(newUser) {
+    return dispatch => {
+      const confObj = {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": 'application/json'
+        },
+        body: JSON.stringify({user: newUser})
+      }
+      fetch(user_url, confObj)
+      .then(res => res.json())
+      .then(newUser => {
+        newUser ?
+          dispatch(createdUser(newUser))
+        : alert('Error Creating New User')
+      })
+      .catch(err => console.warn(err))
+    }
+  }
 
 //   ALL PORTFOLIO RELATED    
 function addToPortfolio(currencyID){
      return {type: ADD_TO_PORTFOLIO , payload:currencyID}
-
     }
+
+    
 function addingToPortfolio(currencyID) {
     return (dispatch,getState) => {
         console.log(`in adding to portfolio${currencyID}`) 
@@ -77,4 +103,5 @@ function fetchingCurrencies(){
     } 
 }
 
-export {fetchingCurrencies,addingToPortfolio, onSearch , fetchedUser , loggedOut , fetchingWatchItems , deleteWatchItem , addedWatchItem }  
+export {fetchingCurrencies,addingToPortfolio, onSearch , fetchedUser , 
+    loggedOut , fetchingWatchItems , deleteWatchItem , addedWatchItem  , createNewUser}  

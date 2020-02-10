@@ -9,6 +9,7 @@ import currencyDetail from '../currencydetail/currencyDetail'
 import WatchList from '../components/WatchList'
 import CurrencyList from '../components/CurrencyList'
 import LoginForm from '../Login/LoginForm' 
+import CreateNewUser from '../Login/createNewUser'
  
 
 
@@ -25,6 +26,7 @@ class App extends Component {
         <Navbar/>
         <Switch>
            <Route exact path ='/' render={() => this.props.user ? <CurrencyList /> : <Redirect to = '/login' /> } />
+           <Route exact path='/signup' component={CreateNewUser} />
            <Route exact path ="/login" render={() => this.props.user ? <Redirect to='/' />: <LoginForm/>} />
            <Route path ="/portfolio" component={PortfolioContainer}  />
            <Route path ="/watchlist" component={WatchList}  />

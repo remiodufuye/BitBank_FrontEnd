@@ -1,7 +1,8 @@
 
 import {combineReducers} from 'redux'
 import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADD_TO_PORTFOLIO , 
-    FETCHED_WATCHITEM , ADDED_WATCHITEM , DELETE_WATCHITEM , CHANGING_SEARCH_TEXT , LOGGED_IN , LOGGED_OUT} from './actionType'
+    FETCHED_WATCHITEM , ADDED_WATCHITEM , DELETE_WATCHITEM , CHANGING_SEARCH_TEXT , 
+    LOGGED_IN , LOGGED_OUT , CREATE_NEW_USER} from './actionType'
 
 const loadingReducer = (oldState=false, action) => {
     switch(action.type) {
@@ -63,6 +64,8 @@ const searchTextReducer = (oldState="", action) => {
   const userReducer = (oldState=null, action) => {
     switch(action.type) {
         case LOGGED_IN:
+            return action.payload
+       case CREATE_NEW_USER:
             return action.payload
        case LOGGED_OUT:
            return action.payload
