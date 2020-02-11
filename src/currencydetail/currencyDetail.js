@@ -18,6 +18,7 @@ import AmountInput from '../components/AmountInput'
 drilldown(Highcharts)
 
 const watchitems_url = 'http://localhost:3000/watchitems'
+const portfolio_url = 'http://localhost:3000/portfolios'
 
 class CurrencyDetail extends Component {
 
@@ -82,7 +83,6 @@ class CurrencyDetail extends Component {
          }
       }
 
-
     //  Methods to add items to portfolio 
          addToPortfolio = (coinID , userID , InputAmount) => {
             // console.log("Inside updating Portfolio")
@@ -102,7 +102,23 @@ class CurrencyDetail extends Component {
               })  
           }
 
-          }
+          fetch(portfolio_url,configOptions)
+          .then(response => response.json())
+          .then(data => {
+
+            if (data.message === "Coin added to Your Portfolio!") {
+              let newObj = JSON.parse(data.portfolio)
+              this.props.addedtoPortFolio(newObj)
+              swal("Done!", data.message, "success")
+              } else {
+              swal("Error!", data.message, 'error') 
+              } 
+
+          }).catch(error => console.log(error.message))
+
+
+          
+     } 
 
 
   render() {
