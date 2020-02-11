@@ -1,14 +1,20 @@
 
 import {LOADING_CURRENCIES , FETCHED_CURRENCIES  , ADDED_WATCHITEM , LOADING_WATCHITEM , FETCHED_WATCHITEM , DELETE_WATCHITEM
-     , ADD_TO_PORTFOLIO ,CHANGING_SEARCH_TEXT , LOGGED_IN ,LOGGED_OUT , CREATE_NEW_USER} from './actionType'
+     , ADDED_TO_PORTFOLIO ,CHANGING_SEARCH_TEXT , LOGGED_IN ,LOGGED_OUT , CREATE_NEW_USER} from './actionType'
 
 const currencies_url = 'http://localhost:3000/currencies'
 const watchitems_url = 'http://localhost:3000/watchitems' 
 const user_url = 'http://localhost:3000/users'
+const portfolio_url = 'http://localhost:3000/portfolios'
+
 
 function onSearch(searchText){
     return {type: CHANGING_SEARCH_TEXT, payload: searchText}
   }
+
+function inputAmount(input){
+  return {type: AMOUNT_INPUT , payload: input}
+}
 
 //   ALL USER RELATED    
 function fetchedUser(userObject) {
@@ -44,14 +50,14 @@ function createdUser(user) {
   }
 
 //   ALL PORTFOLIO RELATED    
-function addToPortfolio(currencyID){
-     return {type: ADD_TO_PORTFOLIO , payload:currencyID}
+function addedToPortfolio(currencyID){
+     return {type: ADDED_TO_PORTFOLIO , payload:currencyID}
     }
 
     
-function addingToPortfolio(currencyID) {
-    return (dispatch,getState) => {
-        console.log(`in adding to portfolio${currencyID}`) 
+function addingToPortfolio() {
+    return (dispatch) => {
+        console.log(`in adding to portfolio`) 
     }
 }
 
@@ -103,5 +109,6 @@ function fetchingCurrencies(){
     } 
 }
 
-export {fetchingCurrencies,addingToPortfolio, onSearch , fetchedUser , 
-    loggedOut , fetchingWatchItems , deleteWatchItem , addedWatchItem  , createNewUser}  
+
+export {fetchingCurrencies, onSearch , fetchedUser , 
+    loggedOut , fetchingWatchItems , deleteWatchItem , addedWatchItem  , createNewUser , inputAmount}  

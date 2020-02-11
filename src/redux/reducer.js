@@ -1,8 +1,8 @@
 
 import {combineReducers} from 'redux'
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADD_TO_PORTFOLIO , 
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADDED_TO_PORTFOLIO , 
     FETCHED_WATCHITEM , ADDED_WATCHITEM , DELETE_WATCHITEM , CHANGING_SEARCH_TEXT , 
-    LOGGED_IN , LOGGED_OUT , CREATE_NEW_USER} from './actionType'
+    LOGGED_IN , LOGGED_OUT , CREATE_NEW_USER , AMOUNT_INPUT} from './actionType'
 
 const loadingReducer = (oldState=false, action) => {
     switch(action.type) {
@@ -26,7 +26,7 @@ const currenciesReducer = (oldState=[] , action) => {
 
 const portfolioReducer = (oldState=[], action) => {
     switch(action.type) {
-        case ADD_TO_PORTFOLIO:
+        case ADDED_TO_PORTFOLIO:
             debugger
             return action.payload
             default:
@@ -60,6 +60,15 @@ const searchTextReducer = (oldState="", action) => {
     }
   }
 
+  const amountInputReducer = (oldState="", action) => {
+      switch(action.type) {
+          case AMOUNT_INPUT:
+          return action.payload 
+          default:
+              return oldState
+      }
+  }
+
 
   const userReducer = (oldState=null, action) => {
     switch(action.type) {
@@ -80,7 +89,8 @@ const rootreducer = combineReducers({
     portfolio: portfolioReducer ,
     watchitems: watchItemReducer,
     searchText: searchTextReducer,
-    currentUser: userReducer
+    currentUser: userReducer , 
+    amount: amountInputReducer
 })
 
 

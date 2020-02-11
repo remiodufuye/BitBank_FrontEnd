@@ -86,8 +86,15 @@ class CurrencyDetail extends Component {
     }
 
     handleChange = (e) => {
-      debugger
       console.log("Inside Handle Change" , e )
+    }
+
+    handleSubmit = (e) => {
+      console.log("here we are ")
+    } 
+
+    handleAmount = (e) => {
+      console.log("check here") 
     }
 
 
@@ -173,30 +180,20 @@ class CurrencyDetail extends Component {
                  <Card.Content >
                  <Image floated='left' size='mini'src={this.props.currency.logo}/>
                  </Card.Content > 
-            <Form.Field onSubmit={() => this.updatingPortfolio}>
-            <div className="form-group">
-              <br />
-              <label>
-                    <h3>The Current Price of  {this.props.currency.name} is Approx. 
-                     ${parseFloat(this.props.currency.price).toFixed(3)} 
-                    </h3>
-              </label>
-              <br/>
-              <label> <h3> Enter Amount Below : </h3></label><br/>
-              <Input onChange={(e) => this.handleChange} focus type="number" name="amount" 
-              placeholder="Number of Coins ... "  />  
-            </div> 
-            <div className="form-group">
-             <br /> 
-              <Button animated='fade' >
-             <Button.Content 
-              visible>Add To Your Portfolio</Button.Content>
-             <Button.Content hidden>
-             Click To Add
-             </Button.Content>
-              </Button>
-            </div>
-            </Form.Field>
+
+                 <form onSubmit={() => this.handleSubmit()}>
+                 <div className="form-group">
+                <label>Enter Amount Owned:</label><br/>
+               <input onChange={() => this.handleChange}  
+               type="number" name="amount" placeholder="How much do you own?" 
+              value={() => this.handleAmount()} className="field"/>
+             </div>
+             <div className="form-group">
+             <input type="submit" className="calculate-btn" value="Calculate My Total"/>
+             </div>
+            </form> 
+
+
             </Modal.Content>
            </Modal>
            </Link>  
@@ -239,3 +236,31 @@ const mapStateToProps = (store, ownProps) => ({
  export default withRouter(connect(mapStateToProps,mapDispatchToProps)(CurrencyDetail));
 
 
+
+
+ /// modal previous 
+
+//  <Form.Field onSubmit={() => this.updatingPortfolio}>
+//  <div className="form-group">
+//    <br />
+//    <label>
+//          <h3>The Current Price of  {this.props.currency.name} is Approx. 
+//           ${parseFloat(this.props.currency.price).toFixed(3)} 
+//          </h3>
+//    </label>
+//    <br/>
+//    <label> <h3> Enter Amount Below : </h3></label><br/>
+//    <Input  onChange={(e) => this.handleChange} focus type="number" name="amount"  value="amount"
+//    placeholder="Number of Coins ... "  />  
+//  </div> 
+//  <div className="form-group">
+//   <br /> 
+//    <Button animated='fade' >
+//   <Button.Content 
+//    visible>Add To Your Portfolio</Button.Content>
+//   <Button.Content hidden>
+//   Click To Add
+//   </Button.Content>
+//    </Button>
+//  </div>
+//  </Form.Field>
