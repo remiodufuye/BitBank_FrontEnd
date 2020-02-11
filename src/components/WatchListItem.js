@@ -36,7 +36,7 @@ class WatchListItem extends Component {
             <Card.Content extra>
                 <div className='ui two buttons'>
                 <Link className ="item" to={`/currencies/${this.props.watchitem.currency.coin_id}`}> 
-                <Button basic color='green'>
+                <Button basic compact fluid color='green'>
                 Show Details
                 </Button> 
                 </Link> 

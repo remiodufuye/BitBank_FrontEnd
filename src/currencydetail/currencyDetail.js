@@ -134,7 +134,6 @@ class CurrencyDetail extends Component {
     
 
       {/* coin market cap explorer  */} 
-     
      <List link>
       <List.Item as='a' 
         href = {this.props.currency.coin_market_cap_explorer}
@@ -142,21 +141,34 @@ class CurrencyDetail extends Component {
         <Button>Coin Explorer</Button>
         </List.Item>
         </List>  
-
       </Segment> 
+
   
-      {/* Button  */}
-      <Segment>
+      {/* Button Buy  */} 
+      {/* <Segment>
        <Button 
        content='Buy' 
        color= "green" 
        icon='money bill alternate outline' 
        labelPosition='left' 
+       />  */}
 
-       /> 
-     
+
+      {/* Button Buy  new */} 
+      <Segment>
+        <Link>
+        <Modal trigger={<Button content='Buy' color= "green" icon='money bill alternate outline' labelPosition='left'></Button>}>
+        <Modal.Header> Add Some {this.props.currency.name} to Your Portfolio </Modal.Header>
+        
+       </Modal>
+       </Link> 
+       
+       
+
+        {/* Button Watchlist  */}
        <Button 
-       content={this.props.watchitems.map(item => item.currency.coin_id).includes(this.props.currency.coin_id) ? 'Already In WatchList' :'Watch'} 
+       content={this.props.watchitems.map(item => item.currency.coin_id).includes(this.props.currency.coin_id) 
+        ? 'Already In WatchList' :'Watch'} 
        color ="blue" 
        icon='eye' 
        labelPosition='right' 
