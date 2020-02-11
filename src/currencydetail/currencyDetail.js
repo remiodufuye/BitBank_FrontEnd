@@ -132,7 +132,6 @@ class CurrencyDetail extends Component {
        
      } 
 
-
   render() {
 
       return (
@@ -176,7 +175,6 @@ class CurrencyDetail extends Component {
           </Card.Content>
       </Segment>
 
-
       {/* You Tube Embed  */} 
       <Segment>
       <Link>
@@ -190,7 +188,6 @@ class CurrencyDetail extends Component {
       </Modal> 
       </Link>  
     
-
       {/* coin market cap explorer  */} 
      <List link>
       <List.Item as='a' 
@@ -201,8 +198,6 @@ class CurrencyDetail extends Component {
         </List>  
       </Segment> 
 
-  
- 
       {/* Button Buy  */} 
       <Segment>
         <Link>
@@ -254,16 +249,11 @@ class CurrencyDetail extends Component {
                 />
               </div>
               </Form.Field>
-             
-          
-
-
+      
             </Modal.Content>
            </Modal>
            </Link>  
        
-       
-
         {/* Button Watchlist  */}
        <Button 
        content={this.props.watchitems.map(item => item.currency.coin_id).includes(this.props.currency.coin_id) 
@@ -274,7 +264,6 @@ class CurrencyDetail extends Component {
        onClick={ () => this.createWatchItem(this.props.currency.coin_id , this.props.user.id)}
        />
        </Segment> 
-
     </Container> 
 
     ) ; 

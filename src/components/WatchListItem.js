@@ -6,10 +6,7 @@ import {deleteWatchItem} from '../redux/actionCreators'
 import {connect} from 'react-redux'
 import swal from 'sweetalert'
 
-
-
 class WatchListItem extends Component {
-    
     
     removeWatchItem = (watchitem) => {
         fetch(`http://localhost:3000/watchitems/${watchitem}` , {
@@ -18,7 +15,6 @@ class WatchListItem extends Component {
         .then(response => response.json())
         .then(watchitem => this.props.deleteWatchItem(watchitem))
     }
-
 
         render() {
             return (
@@ -41,7 +37,6 @@ class WatchListItem extends Component {
                 </Button> 
                 </Link> 
                 <Button basic color='red'
-
                 onClick={() => {
                     swal("Done!", "Deleted From WatchList!", "success")
                    this.removeWatchItem(this.props.watchitem.id)}
@@ -68,8 +63,6 @@ class WatchListItem extends Component {
             }
           } 
       
-
-
     export default withRouter(connect(mapStateToProps,mapDispatchToProps)(WatchListItem));
   
  

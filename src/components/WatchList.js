@@ -22,15 +22,12 @@ const WatchList = props => props.loading ? <p>Loading Currencies...</p> : (
                 <Grid columns="three" divided>
                 <Segment style={{overflow: 'auto', maxHeight: 350 }} >
                 <Card.Group itemsPerRow={5}>
-               
                 { props.watchitems.filter(watchitem => watchitem.currency.name.toLowerCase().includes(props.searchText.toLowerCase()))
                 .map(watchitem => (
                     < WatchListItem
                     key ={watchitem.id}
                     watchitem={watchitem}/> 
                 ))}
-
-
                 </Card.Group>
                 </Segment>
                 </Grid>
@@ -40,7 +37,8 @@ const WatchList = props => props.loading ? <p>Loading Currencies...</p> : (
 
 const mapStateToProps = (store) => ({
        watchitems: store.watchitems ,
-       searchText: store.searchText 
+       searchText: store.searchText ,
+       user: store.currentUser
     }
 );
 
