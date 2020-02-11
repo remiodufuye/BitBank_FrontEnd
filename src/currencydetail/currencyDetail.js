@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import {withRouter , Link } from 'react-router-dom' 
 import {connect} from 'react-redux'
-import {Segment , Button , Header , Container  , Card , Image , Modal , List } from 'semantic-ui-react'
+import {Segment , Button , Header , Container  , Card , Image , Modal , List  , Icon , Form , Input  } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
 import {addedWatchItem , deleteWatchItem } from '../redux/actionCreators' 
 import Highcharts from 'highcharts';
@@ -78,6 +78,19 @@ class CurrencyDetail extends Component {
          }
       }
 
+
+    //  Methods to add items to portfolio 
+
+    updatingPortfolio = () => {
+      console.log("Inside updating Portfolio")
+    }
+
+    handleChange = (e) => {
+      debugger
+      console.log("Inside Handle Change" , e )
+    }
+
+
   render() {
 
       return (
@@ -126,7 +139,7 @@ class CurrencyDetail extends Component {
       <Segment>
       <Link>
       <Modal trigger={<Button>You Tube Video </Button>}>
-      <Modal.Header>{this.props.currency.name}  Explained</Modal.Header>
+      <Modal.Header>{this.props.currency.name}  Explained </Modal.Header>
       <iframe width="100%" height="100%" src={this.props.currency.youtube_url} frameborder="0" 
       allow="accelerometer;  autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen></iframe> 
       </Modal> 
@@ -144,24 +157,49 @@ class CurrencyDetail extends Component {
       </Segment> 
 
   
+ 
       {/* Button Buy  */} 
-      {/* <Segment>
-       <Button 
-       content='Buy' 
-       color= "green" 
-       icon='money bill alternate outline' 
-       labelPosition='left' 
-       />  */}
-
-
-      {/* Button Buy  new */} 
       <Segment>
         <Link>
         <Modal trigger={<Button content='Buy' color= "green" icon='money bill alternate outline' labelPosition='left'></Button>}>
-        <Modal.Header> Add Some {this.props.currency.name} to Your Portfolio </Modal.Header>
-        
-       </Modal>
-       </Link> 
+        <Modal.Header> 
+        <Header as='h2' floated='left' ><Icon name="dollar sign"/> Your BitBANK Portfolio </Header>
+            <br />
+        </Modal.Header>
+            <br />
+            <br />      
+  
+            <Modal.Content image>
+                 <Card.Content >
+                 <Image floated='left' size='mini'src={this.props.currency.logo}/>
+                 </Card.Content > 
+            <Form.Field onSubmit={() => this.updatingPortfolio}>
+            <div className="form-group">
+              <br />
+              <label>
+                    <h3>The Current Price of  {this.props.currency.name} is Approx. 
+                     ${parseFloat(this.props.currency.price).toFixed(3)} 
+                    </h3>
+              </label>
+              <br/>
+              <label> <h3> Enter Amount Below : </h3></label><br/>
+              <Input onChange={(e) => this.handleChange} focus type="number" name="amount" 
+              placeholder="Number of Coins ... "  />  
+            </div> 
+            <div className="form-group">
+             <br /> 
+              <Button animated='fade' >
+             <Button.Content 
+              visible>Add To Your Portfolio</Button.Content>
+             <Button.Content hidden>
+             Click To Add
+             </Button.Content>
+              </Button>
+            </div>
+            </Form.Field>
+            </Modal.Content>
+           </Modal>
+           </Link>  
        
        
 
