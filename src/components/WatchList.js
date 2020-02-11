@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Grid, Card , Segment} from 'semantic-ui-react'
 import SubHeaderWatch from './SubHeaderWatch'
 import Searchbar from '../components/SearchBar'
-import NoWatchItem from '../components/NoWatchItem'
+// import NoWatchItem from '../components/NoWatchItem' 
 
 
 const WatchList = props => props.loading ? <p>Loading Currencies...</p> : (

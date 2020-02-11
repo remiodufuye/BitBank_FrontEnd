@@ -1,13 +1,24 @@
 
-import React from 'react'
-import CurrencyList from '../components/CurrencyList'
+import React , {Component} from 'react'
+import {connect} from 'react-redux'
 
-const PortfolioContainer = () => {
-   return(
-       <div> 
-           <h1>This is the PortfolioContainer </h1>
-        </div>
-   )
+class PortfolioContainer extends Component {
+
+   render() {
+      return(
+          <div> 
+              <h1>This is the PortfolioContainer </h1>
+           </div>
+      )
+   }
 } 
 
-export default PortfolioContainer 
+
+const mapStateToProps = (store) => ({
+   watchitems: store.watchitems ,
+    portfolio : store.portfolio 
+}
+);
+
+
+export default connect(mapStateToProps)(PortfolioContainer)

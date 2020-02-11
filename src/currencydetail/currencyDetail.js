@@ -23,9 +23,12 @@ const portfolio_url = 'http://localhost:3000/portfolios'
 class CurrencyDetail extends Component {
 
   constructor(props) {
-    super() 
+
+    super(props) 
+    
     this.state = {
-      showmodal: false 
+      showmodal: false ,
+      newAmount: '' 
     }
     
       this.options = {
@@ -46,7 +49,17 @@ class CurrencyDetail extends Component {
       } 
 
   }  
+         
 
+        handleAmount = (e) => {
+          this.setState({
+            newAmount: e
+          })
+        }
+
+
+    
+        
       createWatchItem = (coinID , userID) => {
 
         if ( !this.props.watchitems.map(item => item.currency.coin_id).includes(coinID)) {
@@ -66,7 +79,6 @@ class CurrencyDetail extends Component {
        fetch(watchitems_url,configOptions)
        .then(response => response.json())
        .then( data => {
-        //  debugger 
               if (data.message === "Coin added to watchlist!") {
                 let newObj = JSON.parse(data.watchitem)
                 this.props.addedWatchItem(newObj)
@@ -107,17 +119,17 @@ class CurrencyDetail extends Component {
           .then(data => {
 
             if (data.message === "Coin added to Your Portfolio!") {
-              let newObj = JSON.parse(data.portfolio)
+
+              let newObj = JSON.parse(data.portfolio) 
               this.props.addedtoPortFolio(newObj)
-              swal("Done!", data.message, "success")
+              swal("Completed!", data.message, "success")
               } else {
               swal("Error!", data.message, 'error') 
               } 
 
           }).catch(error => console.log(error.message))
 
-
-          
+       
      } 
 
 
@@ -218,8 +230,10 @@ class CurrencyDetail extends Component {
                 <br/>
                 <label> <h3> Enter Amount Below : </h3></label><br/>
            
-                <AmountInput />  
-
+                <AmountInput  
+                handleAmount={this.handleAmount}
+                amount = {this.props.newAmount}
+                />  
                 </div> 
                 <div className="form-group">
                 <br /> 
@@ -232,7 +246,8 @@ class CurrencyDetail extends Component {
                   onClick={ () => 
                       {
                         // let value = 
-                        this.addToPortfolio(this.props.currency.coin_id , this.props.user.id , this.props.amount)
+                        this.addToPortfolio(this.props.currency.coin_id , this.props.user.id , this.state.newAmount )
+                          // this.props.amount)
                       }
                   
                   }
@@ -272,7 +287,6 @@ const mapStateToProps = (store, ownProps) => ({
       ) , 
       user: store.currentUser ,
       watchitems: store.watchitems ,
-      amount: store.amount ,
       portfolio: store.portfolio
  })
 
@@ -289,31 +303,3 @@ const mapStateToProps = (store, ownProps) => ({
  export default withRouter(connect(mapStateToProps,mapDispatchToProps)(CurrencyDetail));
 
 
-
-
- /// modal previous 
-
-//  <Form.Field onSubmit={() => this.updatingPortfolio}>
-//  <div className="form-group">
-//    <br />
-//    <label>
-//          <h3>The Current Price of  {this.props.currency.name} is Approx. 
-//           ${parseFloat(this.props.currency.price).toFixed(3)} 
-//          </h3>
-//    </label>
-//    <br/>
-//    <label> <h3> Enter Amount Below : </h3></label><br/>
-//    <Input  onChange={(e) => this.handleChange} focus type="number" name="amount"  value="amount"
-//    placeholder="Number of Coins ... "  />  
-//  </div> 
-//  <div className="form-group">
-//   <br /> 
-//    <Button animated='fade' >
-//   <Button.Content 
-//    visible>Add To Your Portfolio</Button.Content>
-//   <Button.Content hidden>
-//   Click To Add
-//   </Button.Content>
-//    </Button>
-//  </div>
-//  </Form.Field>

@@ -4,7 +4,7 @@ import '../App.css';
 import Navbar from '../Login/Navbar' 
 import PortfolioContainer from '../container/PortfolioContainer'
 import {connect} from 'react-redux'
-import {fetchingCurrencies ,fetchingWatchItems} from '../redux/actionCreators'
+import {fetchingCurrencies ,fetchingWatchItems , fetchingPortfolio } from '../redux/actionCreators'
 import currencyDetail from '../currencydetail/currencyDetail'
 import WatchList from '../components/WatchList'
 import CurrencyList from '../components/CurrencyList'
@@ -18,6 +18,7 @@ class App extends Component {
   componentDidMount(){
     this.props.fetchingCurrencies()
     this.props.fetchingWatchItems() 
+    this.props.fetchingPortfolio() 
   }
 
   render() {
@@ -41,13 +42,15 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     user: state.currentUser,
-    watchitems : state.watchitems
+    watchitems : state.watchitems ,
+    portfolio : state.portfolio 
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   fetchingCurrencies: () => {dispatch(fetchingCurrencies())} ,
-  fetchingWatchItems: () => {dispatch(fetchingWatchItems())} 
+  fetchingWatchItems: () => {dispatch(fetchingWatchItems())} ,
+  fetchingPortfolio: () => {dispatch(fetchingPortfolio())}  
 })
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps) (App)) ; 

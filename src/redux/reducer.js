@@ -65,14 +65,14 @@ const searchTextReducer = (oldState="", action) => {
     }
   }
 
-  const amountInputReducer = (oldState="", action) => {
-      switch(action.type) {
-          case AMOUNT_INPUT:
-          return action.payload 
-          default:
-              return oldState
-      }
-  }
+//   const amountInputReducer = (oldState="", action) => {
+//       switch(action.type) {
+//           case AMOUNT_INPUT:
+//           return action.payload 
+//           default:
+//               return oldState
+//       }
+//   }
 
 
   const userReducer = (oldState=null, action) => {
@@ -94,8 +94,8 @@ const rootreducer = combineReducers({
     portfolio: portfolioReducer ,
     watchitems: watchItemReducer,
     searchText: searchTextReducer,
-    currentUser: userReducer , 
-    amount: amountInputReducer
+    currentUser: userReducer 
+    // amount: amountInputReducer
 })
 
 
