@@ -5,11 +5,13 @@ import {connect} from 'react-redux'
 import {Segment , Button , Header , Container  , Card , Image , Modal , List  , Icon , Form , Input  } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
 import {addedWatchItem , deleteWatchItem } from '../redux/actionCreators' 
+import {addedtoPortFolio , deletefromPortfolio } from '../redux/actionCreators'
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import drilldown from 'highcharts/modules/drilldown' 
 import NoDataAvailable from './NoDataAvailable'
 import swal from 'sweetalert'
+import AmountInput from '../components/AmountInput'
 
 
 
@@ -45,7 +47,9 @@ class CurrencyDetail extends Component {
   }  
 
       createWatchItem = (coinID , userID) => {
+
         if ( !this.props.watchitems.map(item => item.currency.coin_id).includes(coinID)) {
+
           let configOptions = {
             method: "POST", 
             headers: {
@@ -80,22 +84,25 @@ class CurrencyDetail extends Component {
 
 
     //  Methods to add items to portfolio 
+         addToPortfolio = (coinID , userID , InputAmount) => {
+            // console.log("Inside updating Portfolio")
 
-    updatingPortfolio = () => {
-      console.log("Inside updating Portfolio")
-    }
+            let configOptions = {
+              method: "POST", 
+              headers: {
+                "Accept":"application/json" ,
+                "Content-Type":"application/json"
+              } ,
+              body: JSON.stringify({
+                user_id: userID , 
+                currency_id: coinID ,
+                amount : InputAmount ,
+                value : null  
+                // change or remove value column 
+              })  
+          }
 
-    handleChange = (e) => {
-      console.log("Inside Handle Change" , e )
-    }
-
-    handleSubmit = (e) => {
-      console.log("here we are ")
-    } 
-
-    handleAmount = (e) => {
-      console.log("check here") 
-    }
+          }
 
 
   render() {
@@ -147,8 +154,11 @@ class CurrencyDetail extends Component {
       <Link>
       <Modal trigger={<Button>You Tube Video </Button>}>
       <Modal.Header>{this.props.currency.name}  Explained </Modal.Header>
-      <iframe width="100%" height="100%" src={this.props.currency.youtube_url} frameborder="0" 
-      allow="accelerometer;  autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen></iframe> 
+      < iframe width="100%" height="100%" 
+        src={this.props.currency.youtube_url} frameborder="0" 
+        allow="accelerometer;  autoplay; encrypted-media; gyroscope;
+         picture-in-picture" allowFullscreen>
+        </iframe> 
       </Modal> 
       </Link>  
     
@@ -181,17 +191,40 @@ class CurrencyDetail extends Component {
                  <Image floated='left' size='mini'src={this.props.currency.logo}/>
                  </Card.Content > 
 
-                 <form onSubmit={() => this.handleSubmit()}>
-                 <div className="form-group">
-                <label>Enter Amount Owned:</label><br/>
-               <input onChange={() => this.handleChange}  
-               type="number" name="amount" placeholder="How much do you own?" 
-              value={() => this.handleAmount()} className="field"/>
-             </div>
-             <div className="form-group">
-             <input type="submit" className="calculate-btn" value="Calculate My Total"/>
-             </div>
-            </form> 
+                 <Form.Field onSubmit={() => this.updatingPortfolio}>
+                <div className="form-group">
+                <br />
+                <label>
+               <h3>The Current Price of  {this.props.currency.name} is Approx. 
+               ${parseFloat(this.props.currency.price).toFixed(3)} 
+                </h3>
+                </label>
+                <br/>
+                <label> <h3> Enter Amount Below : </h3></label><br/>
+           
+                <AmountInput />  
+
+                </div> 
+                <div className="form-group">
+                <br /> 
+                <Button 
+                   content={this.props.portfolio.map(item => item.currency.coin_id).includes(this.props.currency.coin_id) 
+                    ? 'Buy Some More' :'Buy'} 
+                  color ="green" 
+                  icon='dollar sign' 
+                  labelPosition='left' 
+                  onClick={ () => 
+                      {
+                        // let value = 
+                        this.addToPortfolio(this.props.currency.coin_id , this.props.user.id , this.props.amount)
+                      }
+                  
+                  }
+                />
+              </div>
+              </Form.Field>
+             
+          
 
 
             </Modal.Content>
@@ -222,13 +255,17 @@ const mapStateToProps = (store, ownProps) => ({
      currency => {return currency.coin_id === parseInt(ownProps.match.params.currencyId)}
       ) , 
       user: store.currentUser ,
-      watchitems: store.watchitems 
+      watchitems: store.watchitems ,
+      amount: store.amount ,
+      portfolio: store.portfolio
  })
 
     const mapDispatchToProps = dispatch => {
       return {
         addedWatchItem: (watchitem) => {dispatch(addedWatchItem(watchitem))}  ,
-        deleteWatchItem: (watchitem) => {dispatch(deleteWatchItem(watchitem))}
+        deleteWatchItem: (watchitem) => {dispatch(deleteWatchItem(watchitem))} ,
+        addedtoPortFolio: (portfolioitem) => {dispatch(addedtoPortFolio(portfolioitem))} ,
+        deletefromPortfolio: (portfolioitem) => {dispatch(deletefromPortfolio(portfolioitem))}
       }
     } 
 

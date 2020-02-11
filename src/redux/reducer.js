@@ -1,8 +1,9 @@
 
 import {combineReducers} from 'redux'
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES, ADDED_TO_PORTFOLIO , 
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES , 
     FETCHED_WATCHITEM , ADDED_WATCHITEM , DELETE_WATCHITEM , CHANGING_SEARCH_TEXT , 
-    LOGGED_IN , LOGGED_OUT , CREATE_NEW_USER , AMOUNT_INPUT} from './actionType'
+    LOGGED_IN , LOGGED_OUT , CREATE_NEW_USER , AMOUNT_INPUT , FETCHED_PORTFOLIO , ADDED_TO_PORTFOLIO ,DELETE_FRM_PORTFOLIO
+} from './actionType'
 
 const loadingReducer = (oldState=false, action) => {
     switch(action.type) {
@@ -26,10 +27,14 @@ const currenciesReducer = (oldState=[] , action) => {
 
 const portfolioReducer = (oldState=[], action) => {
     switch(action.type) {
-        case ADDED_TO_PORTFOLIO:
-            debugger
+        case FETCHED_PORTFOLIO:
             return action.payload
-            default:
+        case ADDED_TO_PORTFOLIO:
+            return [...oldState , action.payload]
+        case DELETE_FRM_PORTFOLIO:
+            let newPortfolioItem = oldState.filter(porfolio => porfolio.id !== action.payload.id)
+            return newPortfolioItem 
+        default:
             return oldState
     }
 

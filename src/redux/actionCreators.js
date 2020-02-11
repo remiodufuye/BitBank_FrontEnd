@@ -1,6 +1,8 @@
 
-import {LOADING_CURRENCIES , FETCHED_CURRENCIES  , ADDED_WATCHITEM , LOADING_WATCHITEM , FETCHED_WATCHITEM , DELETE_WATCHITEM
-     , ADDED_TO_PORTFOLIO ,CHANGING_SEARCH_TEXT , LOGGED_IN ,LOGGED_OUT , CREATE_NEW_USER} from './actionType'
+import {LOADING_CURRENCIES , FETCHED_CURRENCIES  , ADDED_WATCHITEM , LOADING_WATCHITEM , FETCHED_WATCHITEM , DELETE_WATCHITEM,
+  LOADING_PORTFOLIO , ADDED_TO_PORTFOLIO ,FETCHED_PORTFOLIO , CHANGING_SEARCH_TEXT , LOGGED_IN ,LOGGED_OUT , CREATE_NEW_USER , 
+  AMOUNT_INPUT , DELETE_FRM_PORTFOLIO }
+      from './actionType'
 
 const currencies_url = 'http://localhost:3000/currencies'
 const watchitems_url = 'http://localhost:3000/watchitems' 
@@ -50,16 +52,37 @@ function createdUser(user) {
   }
 
 //   ALL PORTFOLIO RELATED    
-function addedToPortfolio(currencyID){
-     return {type: ADDED_TO_PORTFOLIO , payload:currencyID}
+
+function loadingPortfolio() {
+  return {type: LOADING_PORTFOLIO}
+  }
+
+
+function fetchedPortfolio(portfolioArray){
+     return {type: FETCHED_PORTFOLIO , payload:portfolioArray}
     }
 
-    
-function addingToPortfolio() {
+  function fetchingPortfolio() {
     return (dispatch) => {
-        console.log(`in adding to portfolio`) 
+      dispatch(loadingPortfolio())
+      fetch(portfolio_url)
+      .then(response => response.json())
+      .then(portfolioArray => {
+        dispatch(fetchedPortfolio(portfolioArray))
+      })
     }
+  }
+
+  function addedtoPortFolio(portfolioObj) {
+    return {type: ADDED_TO_PORTFOLIO , payload: portfolioObj}
+  }
+
+  function deletefromPortfolio(portfolioObj) {
+    return {type: DELETE_FRM_PORTFOLIO , payload:portfolioObj} 
 }
+
+    
+
 
 //   ALL WATCHITEM RELATED  
 function loadingWatchItems(){
@@ -110,5 +133,5 @@ function fetchingCurrencies(){
 }
 
 
-export {fetchingCurrencies, onSearch , fetchedUser , 
-    loggedOut , fetchingWatchItems , deleteWatchItem , addedWatchItem  , createNewUser , inputAmount}  
+export {fetchingCurrencies, onSearch , fetchedUser , loggedOut , fetchingWatchItems , 
+  deleteWatchItem , addedWatchItem  , createNewUser , inputAmount , fetchingPortfolio , addedtoPortFolio ,deletefromPortfolio }  
