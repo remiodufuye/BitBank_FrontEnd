@@ -54,34 +54,3 @@ class PortfolioContainer extends Component {
     export default connect(mapStateToProps)(PortfolioContainer)
 
 
-
-
-
-    // return (
-      
-    //   <div>
-    //     <div>
-    //       <br /> 
-    //     <SubHeaderPortfolio /> 
-    //     <br /> 
-    //     <br />
-    //     <Card>
-    //       <div className="portfolio-value">
-    //       <div className="portfolio-value--header">Your Total Portfolio Value Is:</div>
-    //       <div className="portfolio-value--content">${formatted_total}</div>
-    //     </div> 
-    //     </Card>
-    //     <div className="portfolio-items"> 
-    //     <Card.Group itemsPerRow={5}>
-    //           <Container>
-    //           {this.props.portfolio.map(portfolioItem => 
-    //             (<PortfolioItem
-    //             key ={portfolioItem.id}
-    //             portfolioItem={portfolioItem}
-    //             />))}
-    //           </Container>
-    //     </Card.Group> 
-    //     </div>
-    //     </div>
-    //   </div>
-    // )   

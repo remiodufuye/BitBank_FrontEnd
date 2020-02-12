@@ -61,7 +61,7 @@ class CurrencyDetail extends Component {
     
         
       createWatchItem = (coinID , userID) => {
-
+  
         if ( !this.props.watchitems.map(item => item.currency.coin_id).includes(coinID)) {
 
           let configOptions = {
@@ -95,42 +95,79 @@ class CurrencyDetail extends Component {
          }
       }
 
-    //  Methods to add items to portfolio 
-         addToPortfolio = (coinID , userID , InputAmount) => {
-            // console.log("Inside updating Portfolio")
 
-            let configOptions = {
-              method: "POST", 
-              headers: {
-                "Accept":"application/json" ,
-                "Content-Type":"application/json"
-              } ,
-              body: JSON.stringify({
-                user_id: userID , 
-                currency_id: coinID ,
-                amount : InputAmount ,
-                value : null  
-                // change or remove value column 
-              })  
-          }
+          //  Methods to add items to portfolio 
+              addToPortfolio = (coinID , userID , InputAmount , newValue) => {
 
-          fetch(portfolio_url,configOptions)
-          .then(response => response.json())
-          .then(data => {
+                  // console.log("Inside updating Portfolio")
+                  // debugger
+               if ( !this.props.portfolio.map(item => item.currency.coin_id).includes(coinID)) {
+                  let configOptions = {
+                    method: "POST", 
+                    headers: {
+                      "Accept":"application/json" ,
+                      "Content-Type":"application/json"
+                    } ,
+                    body: JSON.stringify({
+                      user_id: userID , 
+                      currency_id: coinID ,
+                      amount : InputAmount ,
+                      value : newValue
+                    })  
+                }
 
-            if (data.message === "Coin added to Your Portfolio!") {
+                fetch(portfolio_url,configOptions)
+                .then(response => response.json()) 
+                .then(data => {
 
-              let newObj = JSON.parse(data.portfolio) 
-              this.props.addedtoPortFolio(newObj)
-              swal("Completed!", data.message, "success")
+                  if (data.message === "Coin added to Your Portfolio!") {
+
+                    let newObj = JSON.parse(data.portfolio) 
+                    this.props.addedtoPortFolio(newObj)
+                    swal("Completed!", data.message, "success")
+                    } else {
+                    swal("Error!", data.message, 'error') 
+                    } 
+
+                }).catch(error => console.log(error.message))
               } else {
-              swal("Error!", data.message, 'error') 
-              } 
 
-          }).catch(error => console.log(error.message))
+                // update the current portfolio record 
+     
+                  let configOptions = {
+                  method: "PATCH", 
+                  headers: {
+                    "Accept":"application/json" ,
+                    "Content-Type":"application/json"
+                  } ,
+                  body: JSON.stringify({
+                    user_id: userID , 
+                    currency_id: coinID ,
+                    amount : InputAmount ,
+                    value : newValue
+                  })  
+              }
 
-       
-     } 
+                fetch(portfolio_url,configOptions)
+                .then(response => response.json())
+                .then( data => {
+                   console.log(data) 
+                })
+
+
+
+
+              }
+            
+
+          } 
+
+
+    
+
+
+
+
 
   render() {
 
@@ -240,8 +277,9 @@ class CurrencyDetail extends Component {
                   labelPosition='left' 
                   onClick={ () => 
                       {
-                        // let value = 
-                        this.addToPortfolio(this.props.currency.coin_id , this.props.user.id , this.state.newAmount )
+                        
+                        let newValue = ( parseFloat(this.props.currency.price).toFixed(2) * parseFloat(this.state.newAmount ).toFixed(2) ).toFixed(2) 
+                        this.addToPortfolio(this.props.currency.coin_id , this.props.user.id , this.state.newAmount  , newValue )
                           // this.props.amount)
                       }
                   
@@ -269,6 +307,10 @@ class CurrencyDetail extends Component {
     ) ; 
   }
 } 
+
+
+
+
 
 const mapStateToProps = (store, ownProps) => ({
   currency: store.currencies.find(
