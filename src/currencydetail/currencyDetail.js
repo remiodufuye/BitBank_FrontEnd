@@ -99,14 +99,18 @@ class CurrencyDetail extends Component {
           //  Methods to add items to portfolio 
               addToPortfolio = (coinID , userID , InputAmount , newValue) => {
  
-                 // this.props.currency.coin_id = 512 
+                     debugger 
                      let coin = this.props.currency.id 
                      let currencyIDlist = this.props.portfolio.map(p => p.currency_id)
                      let coinIndex = currencyIDlist.indexOf(parseInt(coin))
+
+                     let Amountlist = this.props.portfolio.map(p => p.amount) 
+                     let amountIndex = Amountlist.indexOf(parseInt(coin))
           
 
 
                if ( !this.props.portfolio.map(item => item.currency.coin_id).includes(coinID)) {
+                   
                   let configOptions = {
                     method: "POST", 
                     headers: {
@@ -116,7 +120,7 @@ class CurrencyDetail extends Component {
                     body: JSON.stringify({
                       user_id: userID , 
                       currency_id: coinID ,
-                      amount : InputAmount ,
+                      amount : InputAmount , 
                       value : newValue
                     })  
                 }
@@ -138,7 +142,7 @@ class CurrencyDetail extends Component {
               } else {
 
                 // update the current portfolio record 
-     
+
                   let configOptions = {
                   method: "PATCH", 
                   headers: {
@@ -156,7 +160,15 @@ class CurrencyDetail extends Component {
                 fetch(`http://localhost:3000/portfolios/${coinIndex}`,configOptions)
                 .then(response => response.json())
                 .then( data => {
-                   console.log(data) 
+                  //  console.log(data) 
+                   if (data.message === "Portfolio Updated!!") {
+                    let newObj = JSON.parse(data.portfolio) 
+                    this.props.addedtoPortFolio(newObj)
+                    // swal("Completed!", data.message, "success")
+                    swal("Completed!", "New Amount Updated !! ", "success")
+                   } else {
+                    swal("Error!", data.message, 'error') 
+                   }
                 })
 
 
