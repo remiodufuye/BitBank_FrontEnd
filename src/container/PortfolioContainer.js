@@ -8,6 +8,8 @@ import SubHeaderPortfolio from '../components/SubHeaderPortfolio'
 class PortfolioContainer extends Component {
       render() {
 
+          debugger 
+
           const total = this.props.portfolio.reduce( (total, curr) => total + curr.value, 0)
           const formatted_total = total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')  
 

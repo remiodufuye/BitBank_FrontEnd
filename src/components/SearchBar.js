@@ -4,7 +4,7 @@ import {onSearch} from '../redux/actionCreators'
 
 
  const  Searchbar = props  => (
-    <div class="ui icon input">
+    <div className="ui icon input">
     <input type="text" 
     placeholder="E.g: Bitcoin, Litecoin, Ethereum..." 
     value={props.value}
