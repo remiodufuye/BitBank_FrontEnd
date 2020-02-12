@@ -137,10 +137,11 @@ class CurrencyDetail extends Component {
                     } 
 
                 }).catch(error => console.log(error.message))
-              } else {
+              } else { 
 
                 // update the current portfolio record 
-                
+                // debugger 
+
                 let previousAmount = this.props.portfolio[coinIndex].amount
 
                   let configOptions = {
@@ -160,7 +161,6 @@ class CurrencyDetail extends Component {
                 fetch(`http://localhost:3000/portfolios/${coinIndex}`,configOptions)
                 .then(response => response.json())
                 .then( data => {
-                  //  console.log(data) 
                    if (data.message === "Portfolio Updated!!") {
                     let newObj = JSON.parse(data.portfolio) 
                     // this.props.addedtoPortFolio(newObj)

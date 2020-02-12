@@ -36,7 +36,14 @@ const portfolioReducer = (oldState=[], action) => {
             let newPortfolioItem = oldState.filter(porfolio => porfolio.id !== action.payload.id)
             return newPortfolioItem 
         case UPDATE_PORTFOLIO:
-            return [...oldState , action.payload]
+            return oldState.map(portfolio => {
+                if (portfolio.id === action.payload.id) {
+                    return action.payload
+                } else {
+                    return portfolio
+                }
+            })
+            // return [...oldState , action.payload]
         default:
             return oldState 
     }
