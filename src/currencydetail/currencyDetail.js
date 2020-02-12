@@ -97,16 +97,14 @@ class CurrencyDetail extends Component {
 
 
           //  Methods to add items to portfolio 
-              addToPortfolio = (coinID , userID , InputAmount , newValue) => {
+              addToPortfolio = (coinID , userID , InputAmount , Value ) => {
  
                     //  debugger 
                      let coin = this.props.currency.id 
                      let currencyIDlist = this.props.portfolio.map(p => p.currency_id)
                      let coinIndex = currencyIDlist.indexOf(parseInt(coin))
 
-                    //  let previousAmount = this.props.portfolio[coinIndex].amount
           
-
                if ( !this.props.portfolio.map(item => item.currency.coin_id).includes(coinID)) {
                    
                   let configOptions = {
@@ -119,7 +117,7 @@ class CurrencyDetail extends Component {
                       user_id: userID , 
                       currency_id: coinID ,
                       amount : InputAmount , 
-                      value : newValue
+                      value : Value
                     })  
                 }
 
@@ -140,9 +138,11 @@ class CurrencyDetail extends Component {
               } else { 
 
                 // update the current portfolio record 
+           
                 // debugger 
 
                 let previousAmount = this.props.portfolio[coinIndex].amount
+                let previousValue = this.props.portfolio[coinIndex].value
 
                   let configOptions = {
                   method: "PATCH", 
@@ -154,7 +154,7 @@ class CurrencyDetail extends Component {
                     user_id: userID , 
                     currency_id: coinID ,
                     amount: InputAmount + previousAmount ,
-                    value: newValue
+                    value: Value + previousValue 
                   })  
               }
                 
@@ -292,10 +292,12 @@ class CurrencyDetail extends Component {
                   onClick={ () => 
                       {
                         
-                        let newValue = ( parseFloat(this.props.currency.price).toFixed(2) * parseFloat(this.state.newAmount ).toFixed(2) ).toFixed(2) 
+                        let Value = ( parseFloat(this.props.currency.price).toFixed(2) 
+                        * parseFloat(this.state.newAmount ).toFixed(2) ).toFixed(2) 
+
                         this.addToPortfolio(this.props.currency.coin_id , this.props.user.id , 
-                          this.state.newAmount  , newValue )
-                          // this.props.amount)
+                          this.state.newAmount  , Value )
+    
                       }
                   
                   }

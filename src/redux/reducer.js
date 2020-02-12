@@ -43,7 +43,6 @@ const portfolioReducer = (oldState=[], action) => {
                     return portfolio
                 }
             })
-            // return [...oldState , action.payload]
         default:
             return oldState 
     }
@@ -97,7 +96,6 @@ const rootreducer = combineReducers({
     watchitems: watchItemReducer,
     searchText: searchTextReducer,
     currentUser: userReducer 
-    // amount: amountInputReducer
 })
 
 
