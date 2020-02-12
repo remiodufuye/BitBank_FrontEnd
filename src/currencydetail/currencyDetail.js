@@ -99,8 +99,13 @@ class CurrencyDetail extends Component {
           //  Methods to add items to portfolio 
               addToPortfolio = (coinID , userID , InputAmount , newValue) => {
 
-                  // console.log("Inside updating Portfolio")
-                  // debugger
+                    debugger
+
+                     let idList = this.props.portfolio.map(p => p.id)
+                     let coinIndex = idList.indexOf(coinID)
+                    // this.props.portfolio[coinIndex].id  
+
+
                if ( !this.props.portfolio.map(item => item.currency.coin_id).includes(coinID)) {
                   let configOptions = {
                     method: "POST", 
@@ -147,8 +152,10 @@ class CurrencyDetail extends Component {
                     value : newValue
                   })  
               }
+                
+                // fetch(`http://localhost:3000/watchitems/${watchitem}`
 
-                fetch(portfolio_url,configOptions)
+                fetch(`http://localhost:3000/portfolios/${this.props.portfolio.id}`,configOptions)
                 .then(response => response.json())
                 .then( data => {
                    console.log(data) 
