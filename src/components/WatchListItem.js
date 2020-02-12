@@ -17,6 +17,7 @@ class WatchListItem extends Component {
     }
 
         render() {
+            
             return (
             <Card>
             <Card.Content>
@@ -52,7 +53,7 @@ class WatchListItem extends Component {
         }
     }
 
-        const mapStateToProps = (store, ownProps) => ({
+        const mapStateToProps = (store) => ({
                 user: store.currentUser ,
                 watchitems: store.watchitems 
         }) 
