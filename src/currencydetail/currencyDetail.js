@@ -98,12 +98,12 @@ class CurrencyDetail extends Component {
 
           //  Methods to add items to portfolio 
               addToPortfolio = (coinID , userID , InputAmount , newValue) => {
-
-                    debugger
-
-                     let idList = this.props.portfolio.map(p => p.id)
-                     let coinIndex = idList.indexOf(coinID)
-                    // this.props.portfolio[coinIndex].id  
+ 
+                 // this.props.currency.coin_id = 512 
+                     let coin = this.props.currency.id 
+                     let currencyIDlist = this.props.portfolio.map(p => p.currency_id)
+                     let coinIndex = currencyIDlist.indexOf(parseInt(coin))
+          
 
 
                if ( !this.props.portfolio.map(item => item.currency.coin_id).includes(coinID)) {
@@ -148,14 +148,12 @@ class CurrencyDetail extends Component {
                   body: JSON.stringify({
                     user_id: userID , 
                     currency_id: coinID ,
-                    amount : InputAmount ,
-                    value : newValue
+                    amount: InputAmount ,
+                    value: newValue
                   })  
               }
                 
-                // fetch(`http://localhost:3000/watchitems/${watchitem}`
-
-                fetch(`http://localhost:3000/portfolios/${this.props.portfolio.id}`,configOptions)
+                fetch(`http://localhost:3000/portfolios/${coinIndex}`,configOptions)
                 .then(response => response.json())
                 .then( data => {
                    console.log(data) 
@@ -286,7 +284,8 @@ class CurrencyDetail extends Component {
                       {
                         
                         let newValue = ( parseFloat(this.props.currency.price).toFixed(2) * parseFloat(this.state.newAmount ).toFixed(2) ).toFixed(2) 
-                        this.addToPortfolio(this.props.currency.coin_id , this.props.user.id , this.state.newAmount  , newValue )
+                        this.addToPortfolio(this.props.currency.coin_id , this.props.user.id , 
+                          this.state.newAmount  , newValue )
                           // this.props.amount)
                       }
                   
@@ -325,7 +324,8 @@ const mapStateToProps = (store, ownProps) => ({
       ) , 
       user: store.currentUser ,
       watchitems: store.watchitems ,
-      portfolio: store.portfolio
+      portfolio: store.portfolio ,
+      currencies: store.currencies 
  })
 
     const mapDispatchToProps = dispatch => {
