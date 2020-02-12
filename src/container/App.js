@@ -21,7 +21,7 @@ class App extends Component {
     this.props.fetchingPortfolio() 
   }
 
-  render() {
+  render() { 
     return (
       <div className="App">
         <Navbar/>

@@ -11,7 +11,7 @@ class PortfolioContainer extends Component {
         //   debugger 
 
           const total = this.props.portfolio.reduce( (total, curr) => total + curr.value, 0)
-          const formatted_total = total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')  
+          const formatted_total = total.toFixed(3).replace(/\d(?=(\d{3})+\.)/g, '$&,')  
 
           return (
             <div className ="ui container">
@@ -27,6 +27,8 @@ class PortfolioContainer extends Component {
               </Card>
                <br /> 
                <br /> 
+                
+               { this.props.portfolio ? 
                 <Grid columns="three" divided>
                 <Segment style={{overflow: 'auto', maxHeight: 350 }} >
                 <Card.Group itemsPerRow={5}>
@@ -37,7 +39,11 @@ class PortfolioContainer extends Component {
                 ))}
                 </Card.Group>
                 </Segment>
-                </Grid>
+                </Grid>  : null  
+               }
+
+
+
             </div>
         </div> 
           )   

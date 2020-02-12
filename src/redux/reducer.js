@@ -2,7 +2,8 @@
 import {combineReducers} from 'redux'
 import {LOADING_CURRENCIES , FETCHED_CURRENCIES , 
     FETCHED_WATCHITEM , ADDED_WATCHITEM , DELETE_WATCHITEM , CHANGING_SEARCH_TEXT , 
-    LOGGED_IN , LOGGED_OUT , CREATE_NEW_USER , AMOUNT_INPUT , FETCHED_PORTFOLIO , ADDED_TO_PORTFOLIO ,DELETE_FRM_PORTFOLIO
+    LOGGED_IN , LOGGED_OUT , CREATE_NEW_USER , AMOUNT_INPUT , FETCHED_PORTFOLIO , ADDED_TO_PORTFOLIO ,DELETE_FRM_PORTFOLIO ,
+    UPDATE_PORTFOLIO
 } from './actionType'
 
 const loadingReducer = (oldState=false, action) => {
@@ -34,8 +35,10 @@ const portfolioReducer = (oldState=[], action) => {
         case DELETE_FRM_PORTFOLIO:
             let newPortfolioItem = oldState.filter(porfolio => porfolio.id !== action.payload.id)
             return newPortfolioItem 
+        case UPDATE_PORTFOLIO:
+            return [...oldState , action.payload]
         default:
-            return oldState
+            return oldState 
     }
 
 }
@@ -65,14 +68,6 @@ const searchTextReducer = (oldState="", action) => {
     }
   }
 
-//   const amountInputReducer = (oldState="", action) => {
-//       switch(action.type) {
-//           case AMOUNT_INPUT:
-//           return action.payload 
-//           default:
-//               return oldState
-//       }
-//   }
 
 
   const userReducer = (oldState=null, action) => {

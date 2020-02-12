@@ -1,7 +1,7 @@
 
 import {LOADING_CURRENCIES , FETCHED_CURRENCIES  , ADDED_WATCHITEM , LOADING_WATCHITEM , FETCHED_WATCHITEM , DELETE_WATCHITEM,
   LOADING_PORTFOLIO , ADDED_TO_PORTFOLIO ,FETCHED_PORTFOLIO , CHANGING_SEARCH_TEXT , LOGGED_IN ,LOGGED_OUT , CREATE_NEW_USER , 
-   DELETE_FRM_PORTFOLIO }
+   DELETE_FRM_PORTFOLIO , UPDATE_PORTFOLIO  }
       from './actionType'
 
 const currencies_url = 'http://localhost:3000/currencies'
@@ -14,9 +14,6 @@ function onSearch(searchText){
     return {type: CHANGING_SEARCH_TEXT, payload: searchText}
   }
 
-// function inputAmount(input){
-//   return {type: AMOUNT_INPUT , payload: input}
-// }
 
 //   ALL USER RELATED    
 function fetchedUser(userObject) {
@@ -81,6 +78,10 @@ function fetchedPortfolio(portfolioArray){
     return {type: DELETE_FRM_PORTFOLIO , payload:portfolioObj} 
 }
 
+  function updatePortFolio(portfolioObj) {
+    return {type: UPDATE_PORTFOLIO , payload:portfolioObj} 
+  }
+
     
 //   ALL WATCHITEM RELATED  
 function loadingWatchItems(){
@@ -132,4 +133,5 @@ function fetchingCurrencies(){
 
 
 export {fetchingCurrencies, onSearch , fetchedUser , loggedOut , fetchingWatchItems , 
-  deleteWatchItem , addedWatchItem  , createNewUser , fetchingPortfolio , addedtoPortFolio ,deletefromPortfolio }  
+  deleteWatchItem , addedWatchItem  , createNewUser , fetchingPortfolio , addedtoPortFolio ,deletefromPortfolio  
+  , updatePortFolio}  

@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {Segment , Button , Header , Container  , Card , Image , Modal , List  , Icon , Form , Input  } from 'semantic-ui-react'
 import NumberFormat from 'react-number-format'
 import {addedWatchItem , deleteWatchItem } from '../redux/actionCreators' 
-import {addedtoPortFolio , deletefromPortfolio } from '../redux/actionCreators'
+import {addedtoPortFolio , deletefromPortfolio , updatePortFolio } from '../redux/actionCreators'
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import drilldown from 'highcharts/modules/drilldown' 
@@ -99,15 +99,13 @@ class CurrencyDetail extends Component {
           //  Methods to add items to portfolio 
               addToPortfolio = (coinID , userID , InputAmount , newValue) => {
  
-                     debugger 
+                    //  debugger 
                      let coin = this.props.currency.id 
                      let currencyIDlist = this.props.portfolio.map(p => p.currency_id)
                      let coinIndex = currencyIDlist.indexOf(parseInt(coin))
 
-                     let Amountlist = this.props.portfolio.map(p => p.amount) 
-                     let amountIndex = Amountlist.indexOf(parseInt(coin))
+                    //  let previousAmount = this.props.portfolio[coinIndex].amount
           
-
 
                if ( !this.props.portfolio.map(item => item.currency.coin_id).includes(coinID)) {
                    
@@ -142,6 +140,8 @@ class CurrencyDetail extends Component {
               } else {
 
                 // update the current portfolio record 
+                
+                let previousAmount = this.props.portfolio[coinIndex].amount
 
                   let configOptions = {
                   method: "PATCH", 
@@ -152,7 +152,7 @@ class CurrencyDetail extends Component {
                   body: JSON.stringify({
                     user_id: userID , 
                     currency_id: coinID ,
-                    amount: InputAmount ,
+                    amount: InputAmount + previousAmount ,
                     value: newValue
                   })  
               }
@@ -163,9 +163,9 @@ class CurrencyDetail extends Component {
                   //  console.log(data) 
                    if (data.message === "Portfolio Updated!!") {
                     let newObj = JSON.parse(data.portfolio) 
-                    this.props.addedtoPortFolio(newObj)
-                    // swal("Completed!", data.message, "success")
-                    swal("Completed!", "New Amount Updated !! ", "success")
+                    // this.props.addedtoPortFolio(newObj)
+                    this.props.updatePortFolio(newObj)
+                    swal("Completed!", data.message , "success")
                    } else {
                     swal("Error!", data.message, 'error') 
                    }
@@ -181,9 +181,6 @@ class CurrencyDetail extends Component {
 
 
     
-
-
-
 
 
   render() {
@@ -345,6 +342,7 @@ const mapStateToProps = (store, ownProps) => ({
         addedWatchItem: (watchitem) => {dispatch(addedWatchItem(watchitem))}  ,
         deleteWatchItem: (watchitem) => {dispatch(deleteWatchItem(watchitem))} ,
         addedtoPortFolio: (portfolioitem) => {dispatch(addedtoPortFolio(portfolioitem))} ,
+        updatePortFolio: (portfolioitem) => {dispatch(updatePortFolio(portfolioitem))} ,
         deletefromPortfolio: (portfolioitem) => {dispatch(deletefromPortfolio(portfolioitem))}
       }
     } 
