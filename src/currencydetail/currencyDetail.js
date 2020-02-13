@@ -138,8 +138,7 @@ class CurrencyDetail extends Component {
               } else { 
 
                 // update the current portfolio record 
-           
-                // debugger 
+        
 
                 let previousAmount = this.props.portfolio[coinIndex].amount
                 let previousValue = this.props.portfolio[coinIndex].value
@@ -319,6 +318,7 @@ class CurrencyDetail extends Component {
        onClick={ () => this.createWatchItem(this.props.currency.coin_id , this.props.user.id)}
        />
        </Segment> 
+       
     </Container> 
 
     ) ; 

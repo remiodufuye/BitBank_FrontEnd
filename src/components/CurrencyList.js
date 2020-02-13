@@ -19,8 +19,16 @@ const CurrencyList = props => props.loading ? <p>Loading Currencies...</p> : (
                <br /> 
                <br /> 
                <br /> 
-                <Grid columns="three" divided>
-                <Segment style={{overflow: 'auto', maxHeight: 350 }} >
+                <Grid columns="three" divided className={
+                    props.currencies.filter(currency => currency.name.toLowerCase().
+                    includes(props.searchText.toLowerCase())).length === 0 ? 'empty-row' : 'default'
+                }>
+                <Segment style={{overflow: 'auto', maxHeight: 350  , width:'100%'}} >
+
+                {
+                    props.currencies.filter(currency => currency.name.toLowerCase().
+                    includes(props.searchText.toLowerCase())).length === 0 ? <h1> No Results Found</h1> : null 
+                }
                 <Card.Group itemsPerRow={5}>
                 { props.currencies.filter(currency => currency.name.toLowerCase().includes(props.searchText.toLowerCase()))
                 .map(currency => (

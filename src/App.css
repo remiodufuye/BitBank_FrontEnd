@@ -8,6 +8,10 @@
 
 /* body::after */
 
+.ui.divided.three.column.grid.empty-row {
+  height: 15em ;
+}
+
   body::after {
   content: "";
   background-image: url('./images/crypto.jpg');

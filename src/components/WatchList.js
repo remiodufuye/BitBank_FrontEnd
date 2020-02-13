@@ -19,10 +19,25 @@ const WatchList = props => props.loading ? <p>Loading Currencies...</p> : (
                <br /> 
                <br /> 
                <br /> 
-                <Grid columns="three" divided>
-                <Segment style={{overflow: 'auto', maxHeight: 350 }} >
+                <Grid columns="three" divided className={
+                    props.watchitems.filter(watchitem => watchitem.currency.name.toLowerCase()
+                    .includes(props.searchText.toLowerCase())).length === 0 ? 'empty-row' : 'default'
+                }>
+
+                <Segment style={{overflow: 'auto', maxHeight: 350  , width:'100%' }} >
+
+                    { 
+
+                        props.watchitems.filter(watchitem => watchitem.currency.name.toLowerCase()
+                        .includes(props.searchText.toLowerCase())).length === 0 ?  
+                        <h1> You Have No WatchList Items </h1> : null 
+                    
+                    }
+
                 <Card.Group itemsPerRow={5}>
-                { props.watchitems.filter(watchitem => watchitem.currency.name.toLowerCase().includes(props.searchText.toLowerCase()))
+
+                { props.watchitems.filter(watchitem => watchitem.currency.name.toLowerCase()
+                .includes(props.searchText.toLowerCase()))
                 .map(watchitem => (
                     < WatchListItem
                     key ={watchitem.id}

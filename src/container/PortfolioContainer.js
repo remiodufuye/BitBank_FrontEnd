@@ -29,9 +29,17 @@ class PortfolioContainer extends Component {
                <br /> 
                 
                { this.props.portfolio ? 
-                <Grid columns="three" divided>
-                <Segment style={{overflow: 'auto', maxHeight: 350 }} >
+                <Grid columns="three" divided className={
+                  this.props.portfolio.length === 0 ? 'empty-row' : 'default'
+                }
+                >
+
+                <Segment style={{overflow: 'auto', maxHeight: 350  , width:'100%' }} >
+                    { 
+                      this.props.portfolio.length === 0 ?  <h1> You Do Not Have Coins In Your Portfolio  </h1> : null 
+                    }
                 <Card.Group itemsPerRow={5}>
+
                 { this.props.portfolio.map(portfolioItem => (
                     < PortfolioItem
                     key ={portfolioItem.id}
