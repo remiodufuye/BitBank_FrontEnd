@@ -36,7 +36,7 @@ class PortfolioContainer extends Component {
 
                 <Segment style={{overflow: 'auto', maxHeight: 350  , width:'100%' }} >
                     { 
-                      this.props.portfolio.length === 0 ?  <h1> You Do Not Have Coins In Your Portfolio  </h1> : null 
+                      this.props.portfolio.length === 0 ?  <h1> You Have No Coins In Your Portfolio  </h1> : null 
                     }
                 <Card.Group itemsPerRow={5}>
 

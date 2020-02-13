@@ -273,8 +273,8 @@ class CurrencyDetail extends Component {
                 </h3>
                 </label>
                 <br/>
-                <label> <h3> Enter Amount Below : </h3></label><br/>
-           
+                {/* <label> <h3> Enter Amount Below : </h3></label><br/> */}
+                <label> <h3> Input Number of Coins Below : </h3></label><br/>
                 <AmountInput  
                 handleAmount={this.handleAmount}
                 amount = {this.props.newAmount}

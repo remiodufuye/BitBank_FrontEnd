@@ -41,27 +41,15 @@ class PortfolioItem extends Component {
               <Button basic color='red'
               onClick={() => {
 
-                  swal("Done!", "Removed From PortFolio!", "success")
+                  swal("Done!", "Coins Sold", "success")
 
-                  // swal({
-                  //   title: "Are you sure?",
-                  //   text: "You will not be able to recover this imaginary file!",
-                  //   type: "warning",
-                  //   showCancelButton: true,
-                  //   confirmButtonColor: "#DD6B55",
-                  //   confirmButtonText: "Yes, delete it!",
-                  //   closeOnConfirm: false
-                  // },
-                  // function(){
-                  //   swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                  // });
-                 
+
 
                  this.removeFromPortFolio(this.props.portfolioItem.id)
               
                   } 
                   } > 
-              Remove From Portfolio 
+              Sell 
               </Button>
               </div> 
           </Card.Content>  
