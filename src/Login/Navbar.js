@@ -36,6 +36,11 @@ class Navbar extends Component{
             <Header as='h4' floated='right'><Icon name="bell outline"/>WatchList</Header>
             </NavLink> : null 
             }
+
+            {/* { this.props.currentUser ? 
+            <Header as='h4' floated='right'><Icon name="id badge"/>{this.props.currentUser}</Header> : null 
+            }    */} 
+
             </Segment>
             </Sticky>
         ) 
