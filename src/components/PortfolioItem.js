@@ -20,8 +20,8 @@ class PortfolioItem extends Component {
 
   render() {
     
-    let newValue = ( parseFloat(this.props.portfolioItem.currency.price).toFixed(2) *
-                   parseFloat(this.props.portfolioItem.amount).toFixed(2) ).toFixed(2) 
+    let newValue = ( parseFloat(this.props.portfolioItem.currency.price).toFixed(3) *
+                   parseFloat(this.props.portfolioItem.amount).toFixed(3) ).toFixed(3) 
 
         return (
           <Card>
@@ -32,7 +32,7 @@ class PortfolioItem extends Component {
               src={this.props.portfolioItem.currency.logo}
               />  
               <Card.Meta><strong>{this.props.portfolioItem.currency.name}</strong></Card.Meta>
-              <Card.Meta><strong> Price: ${(this.props.portfolioItem.currency.price).toFixed(2)}</strong></Card.Meta>
+              <Card.Meta><strong> Price: ${(this.props.portfolioItem.currency.price).toFixed(3)}</strong></Card.Meta>
               <Card.Meta><strong>{this.props.portfolioItem.amount} Coins </strong></Card.Meta>
               <Card.Meta><strong>  Value : ${newValue} (Approx.) </strong></Card.Meta>
           </Card.Content> 
