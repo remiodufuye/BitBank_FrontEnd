@@ -15,6 +15,12 @@ class Navbar extends Component{
             <Link to="/" class ="item">
             <Header as='h2' floated='left' ><Icon name="dollar sign"/>BitBANK</Header>
             </Link>
+
+            {/* { this.props.currentUser ? 
+            <Header as='h4' floated='right'>
+            {this.props.currentUser.username}</Header> : null 
+            }  */}
+
             { !this.props.currentUser ?  
             <NavLink to="/login" activeClassName="active item" className="item">
             <Header as='h4' floated='right'><Icon name="user secret"/> Login </Header>
@@ -37,10 +43,7 @@ class Navbar extends Component{
             </NavLink> : null 
             }
 
-            {/* { this.props.currentUser ? 
-            <Header as='h4' floated='right'><Icon name="id badge"/>{this.props.currentUser}</Header> : null 
-            }    */} 
-
+    
             </Segment>
             </Sticky>
         ) 
