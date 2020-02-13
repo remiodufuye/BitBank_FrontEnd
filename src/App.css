@@ -8,6 +8,10 @@
 
 /* body::after */
 
+::-webkit-scrollbar {
+  display: none;
+} 
+
 .ui.divided.three.column.grid.empty-row {
   height: 15em ;
 }

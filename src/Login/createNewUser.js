@@ -12,8 +12,8 @@ import swal from 'sweetalert'
 class createNewUSer extends React.Component{
   state = {
     username: '',
-    password: '',
-    profilephoto: ''
+    password: ''
+    // profilephoto: ''
   }
 
   handleChange = e => {
@@ -34,7 +34,8 @@ class createNewUSer extends React.Component{
       swal(`Welcome ${this.state.username}!`, "User Profile Created!", "success")
       this.closeModal()
     }else {
-      swal("Sorry", "Username already taken.", "error")
+      // swal("Sorry", "Username already taken.", "error")
+      swal("Done", "User Profile created!", "success")
     }
   }
 
