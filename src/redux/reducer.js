@@ -2,7 +2,7 @@
 import {combineReducers} from 'redux'
 import {LOADING_CURRENCIES , FETCHED_CURRENCIES , 
     FETCHED_WATCHITEM , ADDED_WATCHITEM , DELETE_WATCHITEM , CHANGING_SEARCH_TEXT , 
-    LOGGED_IN , LOGGED_OUT , CREATE_NEW_USER , AMOUNT_INPUT , FETCHED_PORTFOLIO , ADDED_TO_PORTFOLIO ,DELETE_FRM_PORTFOLIO ,
+    LOGGED_IN , LOGGED_OUT , CREATE_NEW_USER  , FETCHED_PORTFOLIO , ADDED_TO_PORTFOLIO ,DELETE_FRM_PORTFOLIO ,
     UPDATE_PORTFOLIO
 } from './actionType'
 
@@ -75,27 +75,38 @@ const searchTextReducer = (oldState="", action) => {
   }
 
 
+  
+ const newUserReducer = (oldState=null, action) => {
+    switch(action.type) { 
+    case CREATE_NEW_USER:
+        return action.payload
+        default:
+            return oldState
+    }
+ } 
 
   const userReducer = (oldState=null, action) => {
     switch(action.type) {
         case LOGGED_IN:
             return action.payload
-       case CREATE_NEW_USER:
-            return action.payload
+    //    case CREATE_NEW_USER:
+    //         return action.payload
        case LOGGED_OUT:
            return action.payload
        default:
            return oldState
-    }
-}
- 
+    } 
+}   
+
+
 const rootreducer = combineReducers({
     loading: loadingReducer ,
     currencies: currenciesReducer ,
     portfolio: portfolioReducer ,
     watchitems: watchItemReducer,
     searchText: searchTextReducer,
-    currentUser: userReducer 
+    currentUser: userReducer ,
+    uewUser: newUserReducer 
 })
 
 

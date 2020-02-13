@@ -6,8 +6,8 @@ import {LOADING_CURRENCIES , FETCHED_CURRENCIES  , ADDED_WATCHITEM , LOADING_WAT
 
 const currencies_url = 'http://localhost:3000/currencies'
 const watchitems_url = 'http://localhost:3000/watchitems' 
-const user_url = 'http://localhost:3000/users'
-const portfolio_url = 'http://localhost:3000/portfolios'
+const user_url =       'http://localhost:3000/users'
+const portfolio_url =  'http://localhost:3000/portfolios'
 
 
 function onSearch(searchText){

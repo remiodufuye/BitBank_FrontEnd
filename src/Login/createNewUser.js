@@ -17,11 +17,11 @@ class createNewUSer extends React.Component{
   }
 
   handleChange = e => {
+    // debugger
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value 
     })
   }
-
 
   handleSubmit = e => {
     const newUser = {
@@ -73,6 +73,7 @@ class createNewUSer extends React.Component{
     )
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return ({createNewUser: (user) => dispatch(createNewUser(user))})
 }
