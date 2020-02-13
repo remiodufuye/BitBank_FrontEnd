@@ -19,7 +19,7 @@ class Navbar extends Component{
             {/* { this.props.currentUser ? 
             <Header as='h4' floated='right'>
             {this.props.currentUser.username}</Header> : null 
-            }  */}
+            }  */} 
 
             { !this.props.currentUser ?  
             <NavLink to="/login" activeClassName="active item" className="item">
