@@ -6,7 +6,7 @@ BitBank is an application built to help people Watch , Buy and Learn More About 
   - designed with React JS
   - Used Redux to Manage State 
   - styled with Semantic UI framework and custom CSS
-  - dynamically communicating with multiple NASA APIs by fetching to the backend
+  - dynamically communicating with Rails APIs by fetching to the backend
   
 ### To start the whole application, please clone both of BitBank-backend and BitBank-frontend
 You can find frontend at: https://github.com/remiodufuye/BitBank_BackEnd
