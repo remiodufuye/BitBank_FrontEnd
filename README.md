@@ -3,7 +3,7 @@ BitBank is an application built to help people Watch , Buy and Learn More About 
 
 <!-- ![homePage](https://github.com/remiodufuye/BitBank_FrontEnd/blob/master/src/images/Home_Screen.png) -->
 
-<img src='./images/Home_Screen.png' alt="bank1" width="500px" />
+<img src='./src/images/Home_Screen.png' alt="bank1" width="500px" />
 
 ### This is a repository for BitBank's frontend:
   - designed with React JS
