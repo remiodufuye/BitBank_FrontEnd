@@ -14,3 +14,4 @@ You can find frontend at: https://github.com/remiodufuye/BitBank_BackEnd
 ## To start this frontend repository:
   1. open and run 'npm install'
   2. run 'npm start' 
+ 
