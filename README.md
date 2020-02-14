@@ -1,7 +1,9 @@
 ## BitBank frontend
 BitBank is an application built to help people Watch , Buy and Learn More About Crypto Currencies .
 
-![homePage](https://github.com/remiodufuye/BitBank_FrontEnd/blob/master/src/images/Home_Screen.png)
+<!-- ![homePage](https://github.com/remiodufuye/BitBank_FrontEnd/blob/master/src/images/Home_Screen.png) -->
+
+<img src='./Images/Home_Screen.png' alt="bank1" width="500px" />
 
 ### This is a repository for BitBank's frontend:
   - designed with React JS
