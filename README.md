@@ -20,3 +20,4 @@ You can find frontend at: https://github.com/remiodufuye/BitBank_BackEnd
  
 
  ### To see a full demo, please look at: https://youtu.be/AeLsFaCOjjY 
+<img src='./src/images/pic2.png' alt="bank2" width="300px" /> <img src='./src/images/pic3.png' alt="bank3" width="300px" /> <img src='./src/images/pic4.png' alt="bank4" width="300px" /> <img src='./src/images/pic5.png' alt="bank5" width="300px" />
