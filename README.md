@@ -10,7 +10,7 @@ BitBank is an application built to help people Watch , Buy and Learn More About 
   - dynamically communicating with Rails APIs by fetching to the backend
   
 ### To start the whole application, please clone both of BitBank-backend and BitBank-frontend
-You can find frontend at: https://github.com/remiodufuye/BitBank_BackEnd
+You can find Backend at: https://github.com/remiodufuye/BitBank_BackEnd
 
 ## To start this frontend repository:
   1. open and run 'npm install'
