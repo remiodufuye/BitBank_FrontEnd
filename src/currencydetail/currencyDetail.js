@@ -49,16 +49,13 @@ class CurrencyDetail extends Component {
       } 
 
   }  
-         
-
+      
         handleAmount = (e) => {
           this.setState({
             newAmount: e
           })
         }
 
-
-    
         
       createWatchItem = (coinID , userID) => {
   
@@ -170,12 +167,8 @@ class CurrencyDetail extends Component {
                    }
                 })
 
-
-
-
               }
             
-
           } 
 
 
@@ -324,8 +317,6 @@ class CurrencyDetail extends Component {
     ) ; 
   }
 } 
-
-
 
 
 
