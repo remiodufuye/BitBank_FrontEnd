@@ -17,5 +17,5 @@ You can find Backend at: https://github.com/remiodufuye/BitBank_BackEnd
   2. run 'npm start' 
  
 
- ### To see a full demo, please look at: https://youtu.be/AeLsFaCOjjY 
+ ### To see a full demo, please look at: https://youtu.be/0RziSXZZ8bk
 <img src='./src/images/pic6.png' alt="bank2" width="300px" /> <img src='./src/images/pic7.png' alt="bank3" width="300px" /> <img src='./src/images/pic8.png' alt="bank4" width="300px" /> <img src='./src/images/pic9.png' alt="bank5" width="300px" />
